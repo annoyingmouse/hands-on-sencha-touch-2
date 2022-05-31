@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Class System | Sencha Touch 2.4 </title>
+    <!--  Generated on September, 5 2019 at 15:38 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="The Class System | Sencha Touch 2.4 " />
+    <meta property="og:description" content="Sencha Touch Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Sencha Touch Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"2","prodObj":{"title":"Sencha Touch","currentVersion":"2.4","hasVersions":true,"productMenu":["2.4","2.3.1","2.2.1","2.1.1","2.0.1"],"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}","theme":{"2.4":"sencha touch","2.4.0":"sencha touch","2.4.1":"sencha touch"}},"hasApi":false,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Sencha Touch","version":"2.4","pageType":"guide","product":"touch","apiProduct":"touch","apiVersion":"2.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{},"navTreeName":"Guides","myId":"core_concepts/class_system","rootPath":"../../","pageName":"The Class System","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">The Class System</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Sencha Touch 2.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#core_concepts-_-class_system_-_dependencies_and_dynamic_loading">Dependencies and Dynamic Loading</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-class_system_-_naming_conventions">Naming Conventions</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_1__classes">1) Classes</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_2__source_files">2) Source Files</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_3__methods_and_variables">3) Methods and Variables</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_4__properties">4) Properties</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-class_system_-_working_with_classes_in_sencha_touch">Working with Classes in Sencha Touch</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_1__declaration">1. Declaration</a>
+                        <a class="toc-page-h4 " href="#core_concepts-_-class_system_-_1_1__the_old_way">1.1. The Old Way</a>
+                        <a class="toc-page-h4 " href="#core_concepts-_-class_system_-_1_2__the_new_way">1.2. The New Way</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_2__configuration">2. Configuration</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-class_system_-_3__statics">3. Statics</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-class_system_-_error_handling_and_debugging">Error Handling and Debugging</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-class_system_-_further_reading">Further Reading</a>
+                </div>
+            <h1 id="core_concepts-_-class_system_-_how_to_use_classes_in_sencha_touch">How to Use Classes in Sencha Touch<a class="quick-link" href="#core_concepts-_-class_system_-_how_to_use_classes_in_sencha_touch"></a></h1>
+<p>Sencha Touch uses the state-of-the-art class system developed for Ext JS 4. This class 
+system makes it easy to create new classes in JavaScript, providing inheritance, dependency 
+loading, mixins, powerful configuration options, and lots more.</p>
+<p>At its simplest, a class is just an object with some functions and properties attached 
+to it. For instance, here is a class for an animal, recording its name and a function that 
+makes it speak:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Animal&#39;, {
+    config: {
+        name: null
+    },
+
+    constructor: function(config) {
+        this.initConfig(config);
+    },
+
+    speak: function() {
+        alert(&#39;grunt&#39;);
+    }
+});
+</code></pre><p>This defines a class called <code>Animal</code>, where each animal can have a name and speak. To create 
+a new instance of animal, we just use Ext.create:</p>
+<pre><code class="language-javascript">var bob = Ext.create(&#39;Animal&#39;, {
+    name: &#39;Bob&#39;
+});
+
+bob.speak(); //alerts &#39;grunt&#39;
+</code></pre><p>We created an Animal called Bob and commanded it to speak. Now that we have created a class 
+and instantiated it, we can start improving what we have. At the moment we do not know 
+Bob&#39;s species, so let us clear that up with a <code>Human</code> subclass:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Human&#39;, {
+    extend: &#39;Animal&#39;,
+
+    speak: function() {
+        alert(this.getName());
+    }
+});
+</code></pre><p>Now we have got a new class that inherits from Animal, therefore gaining all of its 
+functions and configurations. We actually overrode the speak function because most humans 
+are smart enough to say their name instead of grunt. Now, let us make Bob a human:</p>
+<pre><code class="language-javascript">var bob = Ext.create(&#39;Human&#39;, {
+    name: &#39;Bob&#39;
+});
+
+bob.speak(); //alerts &#39;Bob&#39;
+</code></pre><p>In the previous example we used a magical function when adding the Human subclass. You will 
+notice that we did not actually define a getName function for our Animal class, so where 
+did it come from? Part of the class system is the ability to give classes configuration 
+options, which each automatically give you the following functionality:</p>
+<ul>
+<li>a getter function that returns the current value, in this case <code>getName()</code>.</li>
+<li>a setter function that sets a new value, in this case <code>setName()</code>.</li>
+<li>an applier function called by the setter that lets you run a function when a 
+configuration changes, in this case <code>applyName()</code>.</li>
+<li>an updater function called by the setter than runs when the value for a 
+configuration changes, in this case <code>updateName()</code>.</li>
+</ul>
+<p>The getter and setter functions are generated for free and represent the recommended way 
+to store data in a class. Every component in Sencha Touch uses the class system and the 
+generated functions always follow the same pattern, so if you know a config, you already 
+know how to get and set its value.</p>
+<p>This approach also makes your code cleaner. For example, if you wanted to always ask the 
+user if he or she really wants to change Bob&#39;s name, you can just define an <code>applyName</code> 
+function that will be called automatically:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Human&#39;, {
+    extend: &#39;Animal&#39;,
+
+    applyName: function(newName, oldName) {
+        return confirm(&#39;Are you sure you want to change name to &#39; + newName + &#39;?&#39;)? newName : oldName;
+    }
+});
+</code></pre><p>The previous code sample uses the browser&#39;s built in confirm function, which opens a 
+dialog asking the user the question and offering &quot;Yes&quot; and &quot;No&quot; as answers. The applier 
+functions allow you to cancel the name change if the confirm call returned false. As it 
+happens, the confirm function returns either the new or old name, depending on whether 
+the user clicks Yes or No.</p>
+<p>If we create a new Bob instance and try to change his name, but then click No when 
+prompted, his name will not change after all:</p>
+<pre><code class="language-javascript">var bob = Ext.create(&#39;Human&#39;, {
+    name: &#39;Bob&#39;
+});
+
+bob.setName(&#39;Fred&#39;); //opens a confirm box, but we click No
+
+bob.speak(); //still alerts &#39;Bob&#39;
+</code></pre><p>The apply function is also a good place where to <em>transform</em> your value. Remember that 
+whatever this returns, this will be the new value for this configuration. A good example 
+of this would be to prepend a title to the name, as shown in the following code sample:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Human&#39;, {
+    extend: &#39;Animal&#39;,
+
+    applyName: function(newName, oldName) {
+        return &#39;Mr. &#39; + newName;
+    }
+});
+</code></pre><p>Another config method is update. The update method (<code>updateName()</code> in this case) is only 
+called when the value of the config <strong>changes</strong>. For example, given the following code, 
+the <code>updateName()</code> will <em>not</em> be called:</p>
+<pre><code class="language-javascript">var bob = Ext.create(&#39;Human&#39;, {
+    name: &#39;Bob&#39;
+});
+
+bob.setName(&#39;Bob&#39;); // The name is the same, so update is not called
+</code></pre><p>Consequently, when we use the update method, the config is changing. This function should 
+be the place where you update your component, or do whatever you need to do when the 
+value of your config changes. The following  example shows an <code>alert</code>:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Human&#39;, {
+    extend: &#39;Animal&#39;,
+
+    updateName: function(newName, oldName) {
+        alert(&#39;Name changed. New name is: &#39; + newName);
+    }
+});
+</code></pre><p>Remember that the update and apply methods get called on component instantiation too, such 
+that in the following example we would get two alerts:</p>
+<pre><code class="language-javascript">// creating this will cause the name config to update, therefor causing the alert
+var bob = Ext.create(&#39;Human&#39;, {
+    name: &#39;Bob&#39;
+});
+
+// changing it will cause the alert to show again
+bob.setName(&#39;Ed&#39;);
+</code></pre><p>We have basically already learned the following important behavior of classes:</p>
+<ul>
+<li>All classes are defined using <code>Ext.define</code>, including your own classes</li>
+<li>Most classes extend other classes, using the <code>extend</code> syntax</li>
+<li>Classes are created using <code>Ext.create</code>, for example <code>Ext.create(&#39;SomeClass&#39;, {some: &#39;configuration&#39;})</code></li>
+<li>Always use the <code>config</code> syntax to get automatic getters and setters and have a much cleaner codebase</li>
+</ul>
+<p>At this point you can already go about creating classes in your app, but the class system 
+takes care of a few more things that will be helpful to learn.</p>
+<h2 id="core_concepts-_-class_system_-_dependencies_and_dynamic_loading">Dependencies and Dynamic Loading<a class="quick-link" href="#core_concepts-_-class_system_-_dependencies_and_dynamic_loading"></a></h2>
+<p>Most of the time, classes depend on other classes. The Human class described previously 
+depends on the Animal class because it extends it - we depend on Animal being present to 
+be able to define Human. Sometimes you make use of other classes inside a class, so you 
+need to guarantee that those classes are on the page. This is accomplished using the 
+<code>requires</code> syntax, as shown in the following code sample:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Human&#39;, {
+    extend: &#39;Animal&#39;,
+
+    requires: &#39;Ext.MessageBox&#39;,
+
+    speak: function() {
+        Ext.Msg.alert(this.getName(), &quot;Speaks...&quot;);
+    }
+});
+</code></pre><p>When you create a class this way, Sencha Touch verifies if <code>Ext.MessageBox</code> is already 
+loaded and if not, it immediately loads the required class file with AJAX.</p>
+<p><code>Ext.MessageBox</code> itself may also have classes it depends on, which are then also loaded 
+automatically in the background. Once all the required classes are loaded, the Human 
+class is defined and you can start using <code>Ext.create</code> to instantiate people. This works 
+well in development mode, as it means you do not have to manage the loading of all your 
+scripts yourself, but not as well in production, because loading files one by one over 
+an internet connection is rather slow.</p>
+<p>In production, we want to load a single JavaScript file, ideally containing only the 
+classes that our application actually uses. This is done in Sencha Touch using the 
+JSBuilder tool, which analyzes your app and creates a single file build that contains 
+all of your classes and only the framework classes your app actually uses. See the 
+<a href="../getting_started/using_creating_builds.html">Building guide</a> for details on how to use the JSBuilder.</p>
+<p>Each approach has its pros and cons, but can we have the good parts of both without the 
+drawbacks, too? The answer is yes, and we have implemented the solution in Sencha Touch.</p>
+<h2 id="core_concepts-_-class_system_-_naming_conventions">Naming Conventions<a class="quick-link" href="#core_concepts-_-class_system_-_naming_conventions"></a></h2>
+<p>Using consistent naming conventions throughout your code base for classes, namespaces, and 
+filenames helps keep your code organized, structured, and readable.</p>
+<h3 id="core_concepts-_-class_system_-_1__classes">1) Classes<a class="quick-link" href="#core_concepts-_-class_system_-_1__classes"></a></h3>
+<p>Class names may only contain <strong>alphanumeric</strong> characters. Numbers are permitted but are 
+discouraged in most cases, unless they belong to a technical term. Do not use underscores, 
+hyphens, or any other non-alphanumeric character. For example:</p>
+<ul>
+<li><code>MyCompany.useful_util.Debug_Toolbar</code> is discouraged</li>
+<li><code>MyCompany.util.Base64</code> is acceptable</li>
+</ul>
+<p>Where appropriate, class names should be grouped into packages and should be properly 
+namespaced using the object property dot notation ( . ). At the minimum, there should be 
+one unique top level namespace followed by the class name. For example:</p>
+<pre><code class="language-javascript">MyCompany.data.CoolProxy
+MyCompany.Application
+</code></pre><p>The top level namespaces and the actual class names should be in CamelCase, everything else 
+should be all lower-cased. For example:</p>
+<pre><code class="language-javascript">MyCompany.form.action.AutoLoad
+</code></pre><p>Classes that are not distributed by Sencha should never use <code>Ext</code> as the top-level namespace.</p>
+<p>Acronyms should also follow the CamelCase convention, as illustrated by the following naming examples:</p>
+<ul>
+<li><code>Ext.data.JsonProxy</code> instead of <code>Ext.data.JSONProxy</code></li>
+<li><code>MyCompany.util.HtmlParser</code> instead of <code>MyCompary.parser.HTMLParser</code></li>
+<li><code>MyCompany.server.Http</code> instead of <code>MyCompany.server.HTTP</code></li>
+</ul>
+<h3 id="core_concepts-_-class_system_-_2__source_files">2) Source Files<a class="quick-link" href="#core_concepts-_-class_system_-_2__source_files"></a></h3>
+<p>The names of the classes map directly to the file paths in which they are stored. As a r
+esult, there must only be one class per file. For example:</p>
+<ul>
+<li><code>Ext.mixin.Observable</code> is stored in <code>path/to/src/Ext/mixin/Observable.js</code></li>
+<li><code>Ext.form.action.Submit</code> is stored in <code>path/to/src/Ext/form/action/Submit.js</code></li>
+<li><code>MyCompany.chart.axis.Numeric</code> is stored in <code>path/to/src/MyCompany/chart/axis/Numeric.js</code></li>
+</ul>
+<p>where <code>path/to/src</code> is the directory of your application&#39;s classes. All classes should 
+stay under this common root and should be properly namespaced for the best development, 
+maintenance, and deployment experience.</p>
+<h3 id="core_concepts-_-class_system_-_3__methods_and_variables">3) Methods and Variables<a class="quick-link" href="#core_concepts-_-class_system_-_3__methods_and_variables"></a></h3>
+<p>Similarly to class names, method and variable names may only contain <strong>alphanumeric</strong> 
+characters. Numbers are permitted but are discouraged in most cases, unless they belong 
+to a technical term. Do not use underscores, hyphens, or any other non-alphanumeric character.</p>
+<p>Method and variable names should always use CamelCase. This also applies to acronyms.</p>
+<p>Here are a few examples:</p>
+<ul>
+<li><p>Acceptable method names:</p>
+<pre><code class="language-javascript">encodeUsingMd5()
+getHtml() instead of getHTML()
+getJsonResponse() instead of getJSONResponse()
+parseXmlContent() instead of parseXMLContent()
+</code></pre></li>
+<li><p>Acceptable variable names:</p>
+<pre><code class="language-javascript">var isGoodName
+var base64Encoder
+var xmlReader
+var httpServer
+</code></pre></li>
+</ul>
+<h3 id="core_concepts-_-class_system_-_4__properties">4) Properties<a class="quick-link" href="#core_concepts-_-class_system_-_4__properties"></a></h3>
+<p>Class property names follow the same convention as method and variable names, except the 
+case when they are static constants. Static class properties that are constants should be 
+all upper-cased, for example:</p>
+<ul>
+<li><code>Ext.MessageBox.YES = &quot;Yes&quot;</code></li>
+<li><code>Ext.MessageBox.NO  = &quot;No&quot;</code></li>
+<li><code>MyCompany.alien.Math.PI = &quot;4.13&quot;</code></li>
+</ul>
+<h2 id="core_concepts-_-class_system_-_working_with_classes_in_sencha_touch">Working with Classes in Sencha Touch<a class="quick-link" href="#core_concepts-_-class_system_-_working_with_classes_in_sencha_touch"></a></h2>
+<h3 id="core_concepts-_-class_system_-_1__declaration">1. Declaration<a class="quick-link" href="#core_concepts-_-class_system_-_1__declaration"></a></h3>
+<h4 id="core_concepts-_-class_system_-_1_1__the_old_way">1.1. The Old Way<a class="quick-link" href="#core_concepts-_-class_system_-_1_1__the_old_way"></a></h4>
+<p>If you have developed apps with Sencha Touch 1.x, you are certainly familiar with the<br><code>Ext.extend</code> function that creates a class:</p>
+<pre><code class="language-javascript">var MyPanel = Ext.extend(Object, {
+    // ...
+});
+</code></pre><p>This approach is easy to follow when creating a new class that inherits from another. Other 
+than direct inheritance, however, there was not a fluent API for other aspects of class 
+creation, such as configuration, statics, and mixins. We will be reviewing these items in 
+detail shortly.</p>
+<p>Let us take a look at the following example:</p>
+<pre><code class="language-javascript">My.cool.Panel = Ext.extend(Ext.Panel, {
+    // ...
+});
+</code></pre><p>In this example we want to namespace our new class and make it extend from <code>Ext.Panel</code>. There 
+are two concerns we need to address:</p>
+<ol>
+<li><code>My.cool</code> needs to be an existing object before we can assign <code>Panel</code> as its property.</li>
+<li><code>Ext.Panel</code> needs to exist or to be loaded on the page before it can be referenced.</li>
+</ol>
+<p>The first concern is usually solved by using <code>Ext.namespace</code> (aliased by <code>Ext.ns</code>). This 
+method recursively traverses the object/property tree and creates them if they do not 
+exist yet. The drawback is that you need to remember adding this function call above 
+<code>Ext.extend</code> all the time, as shown in the following example:</p>
+<pre><code class="language-javascript">Ext.ns(&#39;My.cool&#39;);
+My.cool.Panel = Ext.extend(Ext.Panel, {
+    // ...
+});
+</code></pre><p>The second issue, however, is not easy to address because <code>Ext.Panel</code> might depend on many 
+other classes that it directly or indirectly inherits from, and in turn, these dependencies 
+might depend on other classes to exist. For that reason, applications written before 
+Sencha Touch usually include the whole library in the form of <code>ext-all.js</code>, even though 
+they might only need a small portion of the framework.</p>
+<h4 id="core_concepts-_-class_system_-_1_2__the_new_way">1.2. The New Way<a class="quick-link" href="#core_concepts-_-class_system_-_1_2__the_new_way"></a></h4>
+<p>Sencha Touch eliminates all these drawbacks with a single method you need to remember for 
+class creation: <code>Ext.define</code>. Its basic syntax is as follows:</p>
+<pre><code class="language-javascript">Ext.define(className, members, onClassCreated);
+</code></pre><p>Let us look at each part of method call:</p>
+<ul>
+<li><code>className</code> is the class name</li>
+<li><code>members</code> is an object that represents a collection of class members in key-value pairs</li>
+<li><code>onClassCreated</code> is an optional function callback to be invoked when all dependencies of 
+this class are ready, and when the class itself is fully created. Due to the 
+<a href="#" class="external-link" target="_blank">new asynchronous nature</a> of class creation, this callback can be useful in many 
+situations. These will be discussed further in <a href="#" class="external-link" target="_blank">Section IV</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="language-javascript">Ext.define(&#39;My.sample.Person&#39;, {
+    name: &#39;Unknown&#39;,
+
+    constructor: function(name) {
+        if (name) {
+            this.name = name;
+        }
+    },
+
+    eat: function(foodType) {
+        alert(this.name + &quot; is eating: &quot; + foodType);
+    }
+});
+
+var aaron = Ext.create(&#39;My.sample.Person&#39;, &#39;Aaron&#39;);
+aaron.eat(&quot;Salad&quot;); // alert(&quot;Aaron is eating: Salad&quot;);
+</code></pre><p>Note that we created a new instance of <code>My.sample.Person</code> using the <code>Ext.create()</code> method.<br>We could have used the <code>new</code> keyword (<code>new My.sample.Person()</code>). However it is recommended 
+that you always use <code>Ext.create</code>, since it allows you to take advantage of dynamic 
+loading. For more info on dynamic loading see the <a href="../getting_started/getting_started.html">Getting Started guide</a>.</p>
+<h3 id="core_concepts-_-class_system_-_2__configuration">2. Configuration<a class="quick-link" href="#core_concepts-_-class_system_-_2__configuration"></a></h3>
+<p>In Sencha Touch, we introduce a dedicated <code>config</code> property that is processed by the 
+powerful <code>Ext.Class</code> preprocessors before the class is created. The <code>config</code> features 
+include the following:</p>
+<ul>
+<li>Configurations are completely encapsulated from other class members.</li>
+<li>Getter and setter functions, methods for every config property are automatically 
+generated into the class prototype during class creation, if the class does not have 
+these methods already defined.</li>
+<li>An <code>apply</code> method is also generated for every config property.  The auto-generated 
+setter method calls the <code>apply</code> method internally before setting the value.  Override 
+the <code>apply</code> method for a config property if you need to run custom logic before setting 
+the value. If <code>apply</code> method does not return a value, then the setter will not set the 
+value. For an example see the following <code>applyTitle</code> code sample:</li>
+</ul>
+<pre><code class="language-javascript">Ext.define(&#39;My.own.Window&#39;, {
+
+    /** @readonly */
+    isWindow: true,
+
+    config: {
+        title: &#39;Title Here&#39;,
+
+        bottomBar: {
+            enabled: true,
+            height: 50,
+            resizable: false
+        }
+    },
+
+    constructor: function(config) {
+        this.initConfig(config);
+    },
+
+    applyTitle: function(title) {
+        if (!Ext.isString(title) || title.length === 0) {
+            console.log(&#39;Error: Title must be a valid non-empty string&#39;);
+        }
+        else {
+            return title;
+        }
+    },
+
+    applyBottomBar: function(bottomBar) {
+        if (bottomBar &amp;&amp; bottomBar.enabled) {
+            if (!this.bottomBar) {
+                return Ext.create(&#39;My.own.WindowBottomBar&#39;, bottomBar);
+            }
+            else {
+                this.bottomBar.setConfig(bottomBar);
+            }
+        }
+    }
+});
+</code></pre><p>The following code illustrates the use of the previously defined My.own.Window class:</p>
+<pre><code class="language-javascript">var myWindow = Ext.create(&#39;My.own.Window&#39;, {
+    title: &#39;Hello World&#39;,
+    bottomBar: {
+        height: 60
+    }
+});
+
+console.log(myWindow.getTitle()); // logs &quot;Hello World&quot;
+
+myWindow.setTitle(&#39;Something New&#39;);
+console.log(myWindow.getTitle()); // logs &quot;Something New&quot;
+
+myWindow.setTitle(null); // logs &quot;Error: Title must be a valid non-empty string&quot;
+
+myWindow.setBottomBar({ height: 100 }); // Bottom bar&#39;s height is changed to 100
+</code></pre><h3 id="core_concepts-_-class_system_-_3__statics">3. Statics<a class="quick-link" href="#core_concepts-_-class_system_-_3__statics"></a></h3>
+<p>Static members can be defined using the <code>statics</code> config, as shown in the following example:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Computer&#39;, {
+    statics: {
+        instanceCount: 0,
+        factory: function(brand) {
+            // &#39;this&#39; in static methods refer to the class itself
+            return new this({brand: brand});
+        }
+    },
+
+    config: {
+        brand: null
+    },
+
+    constructor: function(config) {
+        this.initConfig(config);
+
+        // the &#39;self&#39; property of an instance refers to its class
+        this.self.instanceCount ++;
+    }
+});
+
+var dellComputer = Computer.factory(&#39;Dell&#39;);
+var appleComputer = Computer.factory(&#39;Mac&#39;);
+
+alert(appleComputer.getBrand()); 
+// using the auto-generated getter to get the value of a config property. Alerts &quot;Mac&quot;
+
+alert(Computer.instanceCount); 
+// Alerts &quot;2&quot;
+</code></pre><h2 id="core_concepts-_-class_system_-_error_handling_and_debugging">Error Handling and Debugging<a class="quick-link" href="#core_concepts-_-class_system_-_error_handling_and_debugging"></a></h2>
+<p>Sencha Touch includes some useful features that help you with debugging and error handling.</p>
+<p>You can use the <code>Ext.getDisplayName()</code> call to get the display name of any method.  This 
+is especially useful for throwing errors that have the class name and the method name in 
+their description, as shown in the following code sample:</p>
+<pre><code class="language-javascript">throw new Error(&#39;[&#39;+ Ext.getDisplayName(arguments.callee) +&#39;] Some message here&#39;);
+</code></pre><p>When an error is thrown in any method of any class defined using <code>Ext.define()</code>, you 
+should see the method and class names in the call stack if you are using a WebKit based 
+browser (Chrome or Safari). For example, here is what it would look like in Chrome:</p>
+<p><img src="images/call-stack.png"/></p>
+<h2 id="core_concepts-_-class_system_-_further_reading">Further Reading<a class="quick-link" href="#core_concepts-_-class_system_-_further_reading"></a></h2>
+<p>Classes are only a part of the Sencha Touch ecosystem. To understand more about the framework and how it works, we recommend reading the following guides:</p>
+<ul>
+<li><a href="./components.html">Components and Containers</a></li>
+<li><a href="./data/data_package_overview.html">The Data Package</a></li>
+<li><a href="./layouts.html">The Layout System</a></li>
+<li><a href="../getting_started/getting_started.html">Getting Started</a></li>
+</ul>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Sencha Touch   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Sencha Touch 2.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/touch-2.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Components | Sencha Touch 2.4 </title>
+    <!--  Generated on September, 5 2019 at 15:38 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="Components | Sencha Touch 2.4 " />
+    <meta property="og:description" content="Sencha Touch Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Sencha Touch Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"2","prodObj":{"title":"Sencha Touch","currentVersion":"2.4","hasVersions":true,"productMenu":["2.4","2.3.1","2.2.1","2.1.1","2.0.1"],"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}","theme":{"2.4":"sencha touch","2.4.0":"sencha touch","2.4.1":"sencha touch"}},"hasApi":false,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Sencha Touch","version":"2.4","pageType":"guide","product":"touch","apiProduct":"touch","apiVersion":"2.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{},"navTreeName":"Guides","myId":"core_concepts/components","rootPath":"../../","pageName":"Components","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">Components</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Sencha Touch 2.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_what_is_a_component_">What is a Component?</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_what_is_a_container_">What is a Container?</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_instantiating_components">Instantiating Components</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_configuring_components">Configuring Components</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_using_xtype">Using xtype</a>
+                        <a class="toc-page-h3 " href="#core_concepts-_-components_-_list_of_xtypes">List of xtypes</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_adding_components_to_containers">Adding Components to Containers</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_showing_and_hiding_components">Showing and Hiding Components</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_events">Events</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_docking">Docking</a>
+                        <a class="toc-page-h2 " href="#core_concepts-_-components_-_destroying_components">Destroying Components</a>
+                </div>
+            <h1 id="core_concepts-_-components_-_using_components_in_sencha_touch">Using Components in Sencha Touch<a class="quick-link" href="#core_concepts-_-components_-_using_components_in_sencha_touch"></a></h1>
+<h2 id="core_concepts-_-components_-_what_is_a_component_">What is a Component?<a class="quick-link" href="#core_concepts-_-components_-_what_is_a_component_"></a></h2>
+<p>Most of the visual classes you interact with in Sencha Touch are Components. Every 
+Component in Sencha Touch is a subclass of Ext.Component, which means all have the ability to:</p>
+<ul>
+<li>Render themselves onto the page using a template</li>
+<li>Show and hide themselves at any time</li>
+<li>Center themselves on the screen</li>
+<li>Enable and disable themselves</li>
+</ul>
+<p>Components also have a more advanced behavior which enables them to:</p>
+<ul>
+<li>Float above other components (windows, message boxes, and overlays)</li>
+<li>Change size and position on the screen with animation</li>
+<li>Dock other Components inside themselves (this feature is useful for toolbars)</li>
+<li>Align to other components, allow themselves to be dragged around, make their content scrollable, and more</li>
+</ul>
+<h2 id="core_concepts-_-components_-_what_is_a_container_">What is a Container?<a class="quick-link" href="#core_concepts-_-components_-_what_is_a_container_"></a></h2>
+<p>Every Component you create has all of the previosly mentioned abilities, and applications 
+are made up of lots of components, usually nested inside one another. Containers are 
+similar to Components, but in addition to the capabilities listed previously, they also 
+allow you to render and arrange child Components inside them. Most apps have a single top 
+level Container called a Viewport, which takes up the entire screen. Inside of the Viewport 
+are child components, for example in a mail app the Viewport Container&#39;s two children 
+Components could be a message List and an email preview pane.</p>
+<p>Containers provide the following additional functionality:</p>
+<ul>
+<li>Adding child Components at instantiation and at run time</li>
+<li>Removing child Components</li>
+<li>Specifying a <a href="./layouts.html">Layout</a> </li>
+</ul>
+<p>Layouts determine how a container&#39;s child Components are laid out on the screen. In our 
+mail app example we have used use an HBox layout, which enables us to pin the email list 
+to the left hand edge of the screen and allow the preview pane to occupy the rest. There 
+are several layouts available in Sencha Touch, each of which help you achieve your desired 
+application structure, as explained in the <a href="./layouts.html">Layout guide</a>.</p>
+<h2 id="core_concepts-_-components_-_instantiating_components">Instantiating Components<a class="quick-link" href="#core_concepts-_-components_-_instantiating_components"></a></h2>
+<p>Components are created the same way as all other classes in Sencha Touch - using the 
+Ext.create method call. The following code sample illustrates the creation of a Panel:</p>
+<pre><code class="language-javascript">var panel = Ext.create(&#39;Ext.Panel&#39;, {
+    html: &#39;This is my panel&#39;
+});
+</code></pre><p>This creates a <a href="../../../../touch/2.4/api/Ext.Panel.html">Panel</a> instance, configured with some basic HTML 
+content. A Panel is a simple Component that can render HTML and that also contains other 
+items. In the previous example we have created a Panel instance, but it does not instantly 
+show up on the screen because items are not rendered immediately after being instantiated. 
+This allows us to create some components and move them around before rendering and laying 
+them out, which is significantly faster than moving them after rendering.</p>
+<p>To show this panel on the screen we can simply add it to the global Viewport:</p>
+<pre><code class="language-javascript">Ext.Viewport.add(panel);
+</code></pre><p>Panels are also Containers, which means they can contain other Components, arranged by a 
+layout. Let us revisit the previous example, this time creating a panel with two child 
+Components and an hbox layout:</p>
+<div class="da-inline-code-wrap da-inline-code-wrap-fiddle invisible example-collapse-target" id="s-26" data-fiddle-meta='{"framework":"Sencha Touch","version":"2.4","theme":"sencha touch"}'>
+            <div class="da-inline-fiddle-nav">
+                <div class="code-controls">
+                    <span class="collapse-tool fa fa-caret-up"></span>
+                    <span class="expand-tool fa fa-caret-down"></span>
+                    <span class="expand-code">Expand Code</span>
+                </div>
+                
+                <span class="da-inline-fiddle-nav-code da-inline-fiddle-nav-active">
+                    <span class="fa fa-code"></span>
+                    Code
+                </span>
+                
+                <span class="da-inline-fiddle-nav-fiddle">
+                    <span class="fiddle-icon-wrap">
+                        <span class="fa fa-play-circle">
+                        </span><span class="fa fa-refresh"></span>
+                    </span>
+                    Run
+                </span>
+                
+                <span class="icon-btn fiddle-code-beautify tooltip tooltip-tr-br" data-beautify="Beautify Code">
+                    <i class="fa fa-indent"></i>
+                    <div class="callout callout-b"></div>
+                </span>
+            </div>
+            <div id="s-27" class="ace-ct">Ext.application({
+    name : &#39;Sencha&#39;,
+
+    launch : function() {       
+        var panel = Ext.create(&#39;Ext.Panel&#39;, {
+            layout: &#39;hbox&#39;,
+
+            items: [
+                {
+                    xtype: &#39;panel&#39;,
+                    flex: 1,
+                    html: &#39;Left Panel, 1/3rd of total size&#39;,
+                    style: &#39;background-color: #5E99CC;&#39;
+                },
+                {
+                    xtype: &#39;panel&#39;,
+                    flex: 2,
+                    html: &#39;Right Panel, 2/3rds of total size&#39;,
+                    style: &#39;background-color: #759E60;&#39;
+                }
+            ]
+        });
+
+        Ext.Viewport.add(panel);
+    }
+});</div></div><p>This time we created three Panels - the first one is created just as before, but the inner 
+two are declared inline using an xtype. Xtype is a convenient way of creating Components 
+without having to go through the process of using Ext.create and specifying the full class 
+name, instead you can provide the xtype for the class inside an object and the framework 
+creates the components.</p>
+<p>We also specified a layout for the top level panel - in this case hbox, which splits the
+horizontal width of the parent panel based on the &#39;flex&#39; parameter of each child. For
+example, if the parent Panel above is 300px wide, the first child will be flexed to 100px
+wide and the second to 200px, because the first one was given flex: 1 and the second flex:
+2.</p>
+<h2 id="core_concepts-_-components_-_configuring_components">Configuring Components<a class="quick-link" href="#core_concepts-_-components_-_configuring_components"></a></h2>
+<p>Whenever you create a new Component you can pass it configuration options. All
+configurations for a given Component are listed in the &quot;Config options&quot; section of its
+class documentation page. You can pass in any number of configuration options when you
+instantiate the Component, and modify any of them at any point later on. For example, you
+can easily modify the <a href="../../../../touch/2.4/api/Ext.Panel.html#html">html content</a> of a Panel after having created
+it, as shown in the following example:</p>
+<div class="da-inline-code-wrap da-inline-code-wrap-fiddle invisible example-collapse-target" id="s-28" data-fiddle-meta='{"framework":"Sencha Touch","version":"2.4","theme":"sencha touch"}'>
+            <div class="da-inline-fiddle-nav">
+                <div class="code-controls">
+                    <span class="collapse-tool fa fa-caret-up"></span>
+                    <span class="expand-tool fa fa-caret-down"></span>
+                    <span class="expand-code">Expand Code</span>
+                </div>
+                
+                <span class="da-inline-fiddle-nav-code da-inline-fiddle-nav-active">
+                    <span class="fa fa-code"></span>
+                    Code
+                </span>
+                
+                <span class="da-inline-fiddle-nav-fiddle">
+                    <span class="fiddle-icon-wrap">
+                        <span class="fa fa-play-circle">
+                        </span><span class="fa fa-refresh"></span>
+                    </span>
+                    Run
+                </span>
+                
+                <span class="icon-btn fiddle-code-beautify tooltip tooltip-tr-br" data-beautify="Beautify Code">
+                    <i class="fa fa-indent"></i>
+                    <div class="callout callout-b"></div>
+                </span>
+            </div>
+            <div id="s-29" class="ace-ct">Ext.application({
+    name : &#39;Sencha&#39;,
+
+    launch : function() {       
+        //we can configure the HTML when we instantiate the Component
+        var panel = Ext.create(&#39;Ext.Panel&#39;, {
+            fullscreen: true,
+            html: &#39;This is a Panel&#39;
+        });
+
+        //we can update the HTML later using the setHtml method:
+        panel.setHtml(&#39;Some new HTML&#39;);
+
+        //we can retrieve the current HTML using the getHtml method:
+        Ext.Msg.alert(panel.getHtml()); //alerts &quot;Some new HTML&quot;
+    }
+});</div></div><p>Every config has a getter method and a setter method - these are automatically generated
+and always follow the same pattern. For example, a config called &#39;html&#39; automatically
+receives the getHtml and setHtml methods, while a config called defaultType receives the
+getDefaultType and setDefaultType methods, and so on.</p>
+<h2 id="core_concepts-_-components_-_using_xtype">Using xtype<a class="quick-link" href="#core_concepts-_-components_-_using_xtype"></a></h2>
+<p>Xtype is an easy way to create Components without having to use the full class name. This
+is especially useful when creating a <a href="../../../../touch/2.4/api/Ext.Container.html">Container</a> that contains child
+Components. An xtype is simply a shorthand way of specifying a Component, for example you
+can use xtype: &#39;panel&#39; instead of typing out Ext.Panel.</p>
+<p>The following illustrates the use of xtype:</p>
+<div class="da-inline-code-wrap da-inline-code-wrap-fiddle invisible example-collapse-target" id="s-30" data-fiddle-meta='{"framework":"Sencha Touch","version":"2.4","theme":"sencha touch"}'>
+            <div class="da-inline-fiddle-nav">
+                <div class="code-controls">
+                    <span class="collapse-tool fa fa-caret-up"></span>
+                    <span class="expand-tool fa fa-caret-down"></span>
+                    <span class="expand-code">Expand Code</span>
+                </div>
+                
+                <span class="da-inline-fiddle-nav-code da-inline-fiddle-nav-active">
+                    <span class="fa fa-code"></span>
+                    Code
+                </span>
+                
+                <span class="da-inline-fiddle-nav-fiddle">
+                    <span class="fiddle-icon-wrap">
+                        <span class="fa fa-play-circle">
+                        </span><span class="fa fa-refresh"></span>
+                    </span>
+                    Run
+                </span>
+                
+                <span class="icon-btn fiddle-code-beautify tooltip tooltip-tr-br" data-beautify="Beautify Code">
+                    <i class="fa fa-indent"></i>
+                    <div class="callout callout-b"></div>
+                </span>
+            </div>
+            <div id="s-31" class="ace-ct">Ext.application({
+    name : &#39;Sencha&#39;,
+
+    launch : function() {    
+        Ext.create(&#39;Ext.Container&#39;, {
+            fullscreen: true,
+            layout: &#39;fit&#39;,
+
+            items: [
+                {
+                    xtype: &#39;panel&#39;,
+                    html: &#39;This panel is created by xtype&#39;
+                },
+                {
+                    xtype: &#39;toolbar&#39;,
+                    title: &#39;So is the toolbar&#39;,
+                    docked: &#39;top&#39;
+                }
+            ]
+        });
+    }
+});</div></div><h3 id="core_concepts-_-components_-_list_of_xtypes">List of xtypes<a class="quick-link" href="#core_concepts-_-components_-_list_of_xtypes"></a></h3>
+<p>This is the list of all xtypes available in Sencha Touch:</p>
+<pre>
+xtype                   Class
+-----------------       ---------------------
+actionsheet             Ext.ActionSheet
+audio                   Ext.Audio
+button                  Ext.Button
+component               Ext.Component
+container               Ext.Container
+image                   Ext.Img
+label                   Ext.Label
+loadmask                Ext.LoadMask
+map                     Ext.Map
+mask                    Ext.Mask
+media                   Ext.Media
+panel                   Ext.Panel
+segmentedbutton         Ext.SegmentedButton
+sheet                   Ext.Sheet
+spacer                  Ext.Spacer
+title                   Ext.Title
+titlebar                Ext.TitleBar
+toolbar                 Ext.Toolbar
+video                   Ext.Video
+carousel                Ext.carousel.Carousel
+carouselindicator       Ext.carousel.Indicator
+navigationview          Ext.navigation.View
+datepicker              Ext.picker.Date
+picker                  Ext.picker.Picker
+pickerslot              Ext.picker.Slot
+slider                  Ext.slider.Slider
+thumb                   Ext.slider.Thumb
+tabbar                  Ext.tab.Bar
+tabpanel                Ext.tab.Panel
+tab                     Ext.tab.Tab
+viewport                Ext.viewport.Default
+
+DataView Components
+---------------------------------------------
+dataview                Ext.dataview.DataView
+list                    Ext.dataview.List
+listitemheader          Ext.dataview.ListItemHeader
+nestedlist              Ext.dataview.NestedList
+dataitem                Ext.dataview.component.DataItem
+
+Form Components
+---------------------------------------------
+checkboxfield           Ext.field.Checkbox
+datepickerfield         Ext.field.DatePicker
+emailfield              Ext.field.Email
+field                   Ext.field.Field
+hiddenfield             Ext.field.Hidden
+input                   Ext.field.Input
+numberfield             Ext.field.Number
+passwordfield           Ext.field.Password
+radiofield              Ext.field.Radio
+searchfield             Ext.field.Search
+selectfield             Ext.field.Select
+sliderfield             Ext.field.Slider
+spinnerfield            Ext.field.Spinner
+textfield               Ext.field.Text
+textareafield           Ext.field.TextArea
+textareainput           Ext.field.TextAreaInput
+togglefield             Ext.field.Toggle
+urlfield                Ext.field.Url
+fieldset                Ext.form.FieldSet
+formpanel               Ext.form.Panel
+</pre>
+
+<h2 id="core_concepts-_-components_-_adding_components_to_containers">Adding Components to Containers<a class="quick-link" href="#core_concepts-_-components_-_adding_components_to_containers"></a></h2>
+<p>As mentioned previously, Containers are special Components that can have child Components
+arranged by a Layout. One of the previous code samples showed how to create a Panel with
+two child Panels already defined inside it, but this can also be done at run time:</p>
+<div class="da-inline-code-wrap da-inline-code-wrap-fiddle invisible example-collapse-target" id="s-32" data-fiddle-meta='{"framework":"Sencha Touch","version":"2.4","theme":"sencha touch"}'>
+            <div class="da-inline-fiddle-nav">
+                <div class="code-controls">
+                    <span class="collapse-tool fa fa-caret-up"></span>
+                    <span class="expand-tool fa fa-caret-down"></span>
+                    <span class="expand-code">Expand Code</span>
+                </div>
+                
+                <span class="da-inline-fiddle-nav-code da-inline-fiddle-nav-active">
+                    <span class="fa fa-code"></span>
+                    Code
+                </span>
+                
+                <span class="da-inline-fiddle-nav-fiddle">
+                    <span class="fiddle-icon-wrap">
+                        <span class="fa fa-play-circle">
+                        </span><span class="fa fa-refresh"></span>
+                    </span>
+                    Run
+                </span>
+                
+                <span class="icon-btn fiddle-code-beautify tooltip tooltip-tr-br" data-beautify="Beautify Code">
+                    <i class="fa fa-indent"></i>
+                    <div class="callout callout-b"></div>
+                </span>
+            </div>
+            <div id="s-33" class="ace-ct">Ext.application({
+    name : &#39;Sencha&#39;,
+
+    launch : function() {
+        var aboutPanel = Ext.create(&#39;Ext.Panel&#39;, {
+            html: &#39;About this app&#39;
+        });
+
+        //this is the Panel we&#39;ll be adding to
+        var mainPanel = Ext.create(&#39;Ext.Panel&#39;, {
+            fullscreen: true,
+
+            layout: &#39;hbox&#39;,
+            defaults: {
+                flex: 1
+            },
+
+            items: {
+                html: &#39;First Panel&#39;,
+                style: &#39;background-color: #5E99CC;&#39;
+            }
+        });
+
+        //now we add the first panel inside the second
+        mainPanel.add(aboutPanel);
+    }
+});</div></div><p>In this example we created three Panels in total. First we created the aboutPanel, which
+we might use to tell the user a little about the app. Then we created another panel called
+mainPanel, which already contains a third Panel in its <a href="../../../../touch/2.4/api/Ext.Container.html#cfg-items">items</a> 
+configuration, with some placeholder text (&quot;First Panel&quot;). Finally, we added the
+first panel to the second panel by calling the <a href="../../../../touch/2.4/api/Ext.Container.html#method-add">add</a> method
+on mainPanel.</p>
+<p>In this case we gave our mainPanel another hbox layout, but we also introduced some 
+<a href="../../../../touch/2.4/api/Ext.Container.html#defaults">defaults</a>. These are applied to every item in the Panel, so in this
+case every child inside mainPanel will be given a flex: 1 configuration. The effect of
+this is that when we first render the screen only a single child is present inside
+mainPanel, so that child takes up the full width available to it. Once the mainPanel.add
+line is called though, the aboutPanel is rendered inside of it and also given a flex of 1,
+which causes it and the first panel to both receive half the full width of mainPanel.</p>
+<p>Likewise, it is easy to remove items from a Container using a method call such as the following:</p>
+<pre><code class="language-javascript">mainPanel.remove(aboutPanel);
+</code></pre><p>After this line is run, the app reverts to its previous state, with the first child panel
+once again taking up the full width inside mainPanel.</p>
+<h2 id="core_concepts-_-components_-_showing_and_hiding_components">Showing and Hiding Components<a class="quick-link" href="#core_concepts-_-components_-_showing_and_hiding_components"></a></h2>
+<p>Every Component in Sencha Touch can be shown or hidden with a simple API call. Building on
+the previous  mainPanel example, here is how we can hide it:</p>
+<pre><code class="language-javascript">mainPanel.hide();
+</code></pre><p>This hides the mainPanel itself and any child Components inside it. Showing the Component
+again is predictably easy:</p>
+<pre><code class="language-javascript">mainPanel.show();
+</code></pre><p>Again, this restores the visibility of mainPanel and any child Components inside it.</p>
+<h2 id="core_concepts-_-components_-_events">Events<a class="quick-link" href="#core_concepts-_-components_-_events"></a></h2>
+<p>All Components fire events, which you can listen to and take action on. For example,
+whenever a <a href="../../../../touch/2.4/api/Ext.form.Text.html">Text field</a> is typed into, its &#39;change&#39; event is fired.
+You can listen to that event by using a <a href="../../../../touch/2.4/api/Ext.Component.html#listeners">listeners</a> config,
+as shown in the following example:</p>
+<pre><code class="language-javascript">Ext.create(&#39;Ext.form.Text&#39;, {
+    label: &#39;Name&#39;,
+    listeners: {
+        change: function(field, newValue, oldValue) {
+            myStore.filter(&#39;name&#39;, newValue);
+        }
+    }
+});
+</code></pre><p>Every time the value of the text field changes, the &#39;change&#39; event is fired and the
+specified listener function is called. In this case we filtered a 
+<a href="../../../../touch/2.4/api/Ext.data.Store.html">Store</a> by the name typed into it, but we could have provided any other 
+function there.</p>
+<p>Lots of events are fired by Sencha Touch components, allowing you to easily hook into most
+aspects of an Application&#39;s behavior. They can also be specified after the Component has
+been created.</p>
+<p>For example, assuming that you have a dashboard which polls for live updates, and that you
+do not want it to perform polling when the dashboard is not visible, then you could hook
+into the dashboard&#39;s show and hide events:</p>
+<pre><code class="language-javascript">dashboard.on({
+    hide: MyApp.stopPolling,
+    show: MyApp.startPolling
+});
+</code></pre><p>It is easy to apply behaviors like this to your whole app, in this case preserving battery
+life. Other useful events that are fired are the following:</p>
+<ul>
+<li><a href="../../../../touch/2.4/api/Ext.Component.html#event-show">show</a></li>
+<li><a href="../../../../touch/2.4/api/Ext.Component.html#event-hide">hide</a></li>
+</ul>
+<p>Each Component has a description of the events it fires listed in its class documentation.</p>
+<h2 id="core_concepts-_-components_-_docking">Docking<a class="quick-link" href="#core_concepts-_-components_-_docking"></a></h2>
+<p>Sencha Touch has the ability to dock Components within other Containers. For example,
+assuming we were using an <a href="../../../../touch/2.4/api/Ext.layout.HBox.html">hbox layout</a> and wanted to place a banner
+to the top, we could use docking which provides a way to do this without having to nest
+Containers inside one another:</p>
+<p><img src="images/docktop.jpg"/></p>
+<p><a href="./layouts.html">The Layout Guide</a> has a full discussion of docking and all of the other layout options.</p>
+<h2 id="core_concepts-_-components_-_destroying_components">Destroying Components<a class="quick-link" href="#core_concepts-_-components_-_destroying_components"></a></h2>
+<p>Because most mobile devices have a limited amount of memory, it is often a good idea to
+destroy Components when they are not needed any more. Although this is not the first thing
+to consider when creating an app, it is nevertheless a good way to optimize the user
+experience when you push the app into production. Destroying a Component is done using
+code as in the following example:</p>
+<pre><code class="language-javascript">mainPanel.destroy();
+</code></pre><p>This removes the mainPanel from the DOM and also removes any event listeners it has set up
+on specific DOM elements. It also destroy any instances that the Panel uses internally,
+and it calls the destroy method on all of its child components. After a Component is
+destroyed, all of its children also no longer available, the component no longer is in the
+DOM and any references to it are no longer be valid.</p>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Sencha Touch   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Sencha Touch 2.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/touch-2.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

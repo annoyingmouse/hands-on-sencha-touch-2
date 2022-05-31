@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Native iOS Provisioning | Sencha Touch 2.4 </title>
+    <!--  Generated on September, 5 2019 at 15:38 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="Native iOS Provisioning | Sencha Touch 2.4 " />
+    <meta property="og:description" content="Sencha Touch Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Sencha Touch Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"2","prodObj":{"title":"Sencha Touch","currentVersion":"2.4","hasVersions":true,"productMenu":["2.4","2.3.1","2.2.1","2.1.1","2.0.1"],"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}","theme":{"2.4":"sencha touch","2.4.0":"sencha touch","2.4.1":"sencha touch"}},"hasApi":false,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Sencha Touch","version":"2.4","pageType":"guide","product":"touch","apiProduct":"touch","apiVersion":"2.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{},"navTreeName":"Guides","myId":"packaging/native_ios","rootPath":"../../","pageName":"Native iOS Provisioning","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">Native iOS Provisioning</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Sencha Touch 2.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_ios_certificate_creation__download_and_conversion">iOS Certificate Creation, Download and Conversion</a>
+                        <a class="toc-page-h3 " href="#packaging-_-native_ios_-_mac_os_environment">Mac OS Environment</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_generate_certificate_signing_request">Generate Certificate Signing Request</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_upload_csr_and_generate_ios_certificate">Upload CSR and Generate iOS Certificate</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_convert_certificate_to_p12_format">Convert Certificate to P12 Format</a>
+                        <a class="toc-page-h3 " href="#packaging-_-native_ios_-_windows_environment">Windows Environment</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_create_private_key">Create Private Key</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_generate_certificate_signing_request">Generate Certificate Signing Request</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_upload_csr_and_generate_ios_certificate">Upload CSR and Generate iOS Certificate</a>
+                        <a class="toc-page-h4 " href="#packaging-_-native_ios_-_convert_certificate_to_p12_format">Convert Certificate to P12 Format</a>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_app_id_creation">App ID Creation</a>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_device_registration">Device Registration</a>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_provisioning_profile_creation_and_download">Provisioning Profile Creation and Download</a>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_package_configuration">Package Configuration</a>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_creating_the_packaged_application">Creating the Packaged Application</a>
+                        <a class="toc-page-h2 " href="#packaging-_-native_ios_-_copy_and_run_your_application">Copy and Run your Application</a>
+                </div>
+            <h1 id="packaging-_-native_ios_-_packaging_native_ios_applications">Packaging Native iOS Applications<a class="quick-link" href="#packaging-_-native_ios_-_packaging_native_ios_applications"></a></h1>
+<p>This guide walks through the steps required to create and install a native application
+on a device running iOS for development and testing. This guide does not discuss how to 
+submit your finished app to the iTunes store.  For more information, see 
+the <a href="https://developer.apple.com" class="external-link" target="_blank">Apple Development Portal</a>.</p>
+<p>These steps are required within the Apple Developer Portal to run 
+an application on an iOS device:</p>
+<ol>
+<li>Create, download, and convert an iOS Certificate.</li>
+<li>Create an Application ID.</li>
+<li>Register a device.</li>
+<li>Create and download a Provisioning Profile.  </li>
+</ol>
+<p>After you complete the Apple Developer Portal steps, then:</p>
+<ol>
+<li>Configure the application package Configuration.</li>
+<li>Generate your app.</li>
+<li>Copy and run the packaged application.</li>
+</ol>
+<h2 id="packaging-_-native_ios_-_ios_certificate_creation__download_and_conversion">iOS Certificate Creation, Download and Conversion<a class="quick-link" href="#packaging-_-native_ios_-_ios_certificate_creation__download_and_conversion"></a></h2>
+<p><strong>Important:</strong> Because an iOS Certificate contains signed information about an 
+author (person and company) who creates the application, perform this step normally 
+once. You can use one certificate for multiple applications.</p>
+<p>All iOS native applications need to be bundled with iOS Certificates that
+contain information about the author of the application. These certificates 
+are issued and digitally signed by Apple Inc. through the Apple Developer Portal.</p>
+<p>To generate an iOS Certificate:</p>
+<ol>
+<li>Generate a Certificate Signing Request (CSR).</li>
+<li>Navigate to the Apple Development Portal, Certificates section, and Click <b>Add</b>.</li>
+<li>Upload the CSR to the Development Portal and generate an iOS Certificate</li>
+<li>Download the iOS Certificate.</li>
+<li>Convert to iOS Certificate to P12 format.</li>
+</ol>
+<p>When developing under Windows, the steps are the same, but the methods and 
+commands differ slightly.  </p>
+<h3 id="packaging-_-native_ios_-_mac_os_environment">Mac OS Environment<a class="quick-link" href="#packaging-_-native_ios_-_mac_os_environment"></a></h3>
+<p>All of the tools required for your iOS Certificate are included with Mac OS, 
+so creating your certificate is relatively simple and facilated using the 
+Keychain Access utility. This is located in your Applications/Utility folder.</p>
+<h4 id="packaging-_-native_ios_-_generate_certificate_signing_request">Generate Certificate Signing Request<a class="quick-link" href="#packaging-_-native_ios_-_generate_certificate_signing_request"></a></h4>
+<p>Launch the KeyChain Access utility. From the application menu, choose:</p>
+<p><strong>Keychain access</strong> &gt; <strong>Certificate Assistant</strong> &gt; <strong>Request a Certificate 
+from a Certificate Authority</strong>.</p>
+<p>In the Certificate Information window, enter or select the following information:</p>
+<ul>
+<li>User Email Address field: Your email address</li>
+<li>Common Name field: Your name</li>
+<li>Request is group: Select the <strong>Save to disk</strong> option</li>
+<li>Click <strong>Continue</strong></li>
+</ul>
+<p>The Certificate Assistant saves a Certificate Signing Request (CSR) file 
+to your desktop.
+The public and private key pair generates when you create the Certificate Signing 
+Request (CSR) if you use the Key Chain Assistant to create the CSR.</p>
+<h4 id="packaging-_-native_ios_-_upload_csr_and_generate_ios_certificate">Upload CSR and Generate iOS Certificate<a class="quick-link" href="#packaging-_-native_ios_-_upload_csr_and_generate_ios_certificate"></a></h4>
+<p>After you create your CSR file, navigate to the 
+<a href="https://developer.apple.com" class="external-link" target="_blank">Apple Development Portal</a>, Certificates section. 
+To create a Certificate, click the <b>Add</b> button and select a certificate type of 
+<b>iOS App Development</b>. The portal then requests you to upload your CSR file. 
+After the upload completes, you can generate and download your iOS Certificate.</p>
+<h4 id="packaging-_-native_ios_-_convert_certificate_to_p12_format">Convert Certificate to P12 Format<a class="quick-link" href="#packaging-_-native_ios_-_convert_certificate_to_p12_format"></a></h4>
+<p>After you download your certificate (the default name is <code>ios_development.cer</code>), 
+convert the certificate to P12 format before you can bundle it into your application. 
+For information on what a P12 certificate is, see the Wikipedia
+<a href="http://en.wikipedia.org/wiki/PKCS_%E2%99%AF12" class="external-link" target="_blank">PKCS #12</a> article.</p>
+<p>To convert the certificate to P12 format:</p>
+<ol>
+<li>In the Mac Keychain Access utility, click <strong>File</strong> &gt; <strong>Import</strong>and navigate to the 
+location of the downloaded <code>ios_development.cer</code> file.</li>
+<li>After importing the certificate file, click <strong>Keys Category</strong>.</li>
+<li>Click the private key associated with your Apple iOS Certificate. The private
+key has the following name pattern: iPhone Developer:<code>&lt;First Name&gt; &lt;Last Name&gt;</code> 
+public key reference.</li>
+<li>Click <strong>File</strong> &gt; <strong>Export Items</strong> and save the key in P12 format.</li>
+<li>Specify this file in the Sencha packager config file in the <code>certificatePath</code>
+variable.</li>
+</ol>
+<h3 id="packaging-_-native_ios_-_windows_environment">Windows Environment<a class="quick-link" href="#packaging-_-native_ios_-_windows_environment"></a></h3>
+<p>OpenSSL is required for you to generate a self-signed certificate for your application. 
+OpenSSL for Windows is available at 
+<a href="http://slproweb.com/products/Win32OpenSSL.html" class="external-link" target="_blank">Shining Light Productions</a> 
+where you can download and install:</p>
+<ul>
+<li>Visual C++ 2008 Redistributables (required for OpenSSL)</li>
+<li>Open SSL Light (32 or 64 bit version)</li>
+</ul>
+<p>By default, OpenSSL installs in the directory \OpenSSL-Win<em>XX</em> where <em>XX</em> 
+is 32 or 64 depending on the version you installed. Set environment variables first 
+for OpenSSL to run properly before you proceed to generate your private key required 
+for creating your digital certificate.</p>
+<h4 id="packaging-_-native_ios_-_create_private_key">Create Private Key<a class="quick-link" href="#packaging-_-native_ios_-_create_private_key"></a></h4>
+<p>The following example generates a private key, which is required for signing a 
+digital certificate:</p>
+<pre><code class="language-javascript">&gt; cd \OpenSSL_Win64
+&gt; set OPENSSL_CONF=\OpenSSL-Win64\bin\openssl.cfg
+&gt; set RANDFILE=\OpenSSL-Win64\.rnd
+&gt; openssl genrsa -out myprivatekey.key 2048
+Loading &#39;screen&#39; into random state - done
+Generating RSA private key, 2048 bit long modulus
+................................................................+++
+................................................................+++
+e is 65537 (0x10001)
+&gt;
+</code></pre><p><strong>Note</strong>: Safely store the <code>myprivatekey.key</code> file. You need this to 
+generate your P12 certificate.</p>
+<h4 id="packaging-_-native_ios_-_generate_certificate_signing_request">Generate Certificate Signing Request<a class="quick-link" href="#packaging-_-native_ios_-_generate_certificate_signing_request"></a></h4>
+<p>A CSR is a message sent to a certificate authority to request an identity
+certificate. For more information, see 
+<a href="http://en.wikipedia.org/wiki/Certificate_signing_request" class="external-link" target="_blank">Certificate signing request</a>.</p>
+<p>To create your CSR, type the following <strong>openssl</strong> command at a command line:</p>
+<pre><code class="language-javascript">&gt; openssl req -new -key myprivatekey.key -out mycert.csr 
+Loading &#39;screen&#39; into random state - done
+You are about to be asked to enter information that will be incorporated 
+into your certificate request.
+What you are about to enter is called a Distinguished Name or a DN.
+There are quite a few fields, but you can leave some blank.
+For some fields there will be a default value,
+If you enter &#39;.&#39;, the field will be left blank.
+-----
+Country Name &lt;2 letter code&gt; [AU]: US
+State or Province Name &lt;full name&gt; [Some-State]: My State
+Locality Name &lt;eg, city&gt; []: My City
+Organizational Name &lt;eg, company [Internet Widgits Pty Ltd]: MyCompany, Inc
+Organizational Unit Name &lt;eg, section&gt; []:
+Common Name &lt;eg server FQDN or Your name&gt; []: com.mydomain
+Email Address [] joedeveloper@mydomain.com
+
+Please enter the following &#39;extra&#39; attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+
+&gt;
+</code></pre><h4 id="packaging-_-native_ios_-_upload_csr_and_generate_ios_certificate">Upload CSR and Generate iOS Certificate<a class="quick-link" href="#packaging-_-native_ios_-_upload_csr_and_generate_ios_certificate"></a></h4>
+<p>After you create your CSR file, navigate to the 
+<a href="https://developer.apple.com" class="external-link" target="_blank">Apple Development Portal</a>, Certificates section. 
+To create a Certificate, click the <strong>Add</strong> button and select the certificate type 
+of <code>iOS App Development</code>. You are requested to upload your CSR file. 
+After the upload completes, you can generate and then download your iOS Certificate.</p>
+<h4 id="packaging-_-native_ios_-_convert_certificate_to_p12_format">Convert Certificate to P12 Format<a class="quick-link" href="#packaging-_-native_ios_-_convert_certificate_to_p12_format"></a></h4>
+<p>After you download your certificate (default name is <code>ios_development.cer</code>),
+convert the certificate to P12 format so that you can bundle it into your application. 
+Assuming you are in the directory where you downloaded your iOS Certificate, convert
+the certificate to P12 by executing the following openssl commands:</p>
+<pre><code class="language-javascript">&gt; openssl x509 -in ios_development.cer -inform DER -out ios_development.pem -outform PEM
+&gt; openssl pkcs12 -export -inkey _myprivatekey.key_ -in ios_development.pem -out ios_development.p12
+
+Loading &#39;screen&#39; into random state - done
+Enter Export Password:
+Verifying - Enter Export Password:
+</code></pre><p>Where <em>myprivatekey.key</em> is the keyfile you specified when you
+generated your CSR. </p>
+<p><strong>Note</strong>: If you didn&#39;t enter a challenge password in your CSR, 
+press the <code>Enter</code> key to leave this request empty.</p>
+<p>The resulting <code>.P12</code> file is the name you specified in your 
+packager configuration file for the <code>certificatePath</code> setting.</p>
+<h2 id="packaging-_-native_ios_-_app_id_creation">App ID Creation<a class="quick-link" href="#packaging-_-native_ios_-_app_id_creation"></a></h2>
+<p>The App ID, also known as the Bundle ID, is a unique string used to identify 
+your application. Obtain the App ID from the 
+<a href="https://developer.apple.com" class="external-link" target="_blank">Apple Development Portal</a>.</p>
+<p>For development purposes, all your apps may use the same ID, 
+however for production, this ID must be unique for each application you submit 
+to the iTunes store. Normally the format of the ID follows reverse domain name 
+convention of <code>tld.domain</code> (for example, <code>com.mydomain.appname</code>).</p>
+<p>The App ID is used during the provisioning process to create a relationship 
+between the application you&#39;re developing, and iOS certificates and devices 
+permitted to run the application during testing.</p>
+<h2 id="packaging-_-native_ios_-_device_registration">Device Registration<a class="quick-link" href="#packaging-_-native_ios_-_device_registration"></a></h2>
+<p>(Required once for each device) - Register your device 
+in the Apple Developer portal if you have not already done so. You will need 
+your device&#39;s unique ID (UDID), which you can get with iTunes from your device.</p>
+<p>To view the UDID:</p>
+<ol>
+<li>Open iTunes on your computer (Mac or PC).</li>
+<li>Plug in your iOS device (iPhone, iPod, etc).</li>
+<li>Click its name under the devices list.</li>
+<li>Ensure you&#39;re on the Summary tab.</li>
+<li>Click the serial number - This changes to your device&#39;s UDID.</li>
+<li>Click <strong>Copy</strong> from the Edit menu.</li>
+</ol>
+<p>With your UDID in the clipboard ready for use, go to the Developer Portal 
+and open up the <code>Devices</code> section. </p>
+<p>To add your device:</p>
+<ol>
+<li>Select the Devices menu option.</li>
+<li>Click the [+] in the upper right hand corner to open up theAdd iOS Devices page.</li>
+<li>Enter a name for your device and its UDID (paste from clipboard).</li>
+<li>Click <strong>Continue</strong>.</li>
+</ol>
+<h2 id="packaging-_-native_ios_-_provisioning_profile_creation_and_download">Provisioning Profile Creation and Download<a class="quick-link" href="#packaging-_-native_ios_-_provisioning_profile_creation_and_download"></a></h2>
+<p>At this point, you&#39;ve created an iOS Certificate with your credentials (Step 1), 
+defined an App ID (Step 2) and registered your iOS device (Step 3). </p>
+<p>You only have one step left and that is to put all these together so that 
+your iOS device knows that it can trust your application. 
+That&#39;s what provisioning accomplishes.</p>
+<p>A Provisioning Profile simply links an App ID with iOS Certificates 
+and devices authorized to run the application. </p>
+<p>To create or update a Provisioning profile:</p>
+<ol>
+<li>Give your profile a name.</li>
+<li>Specify the App ID for this profile along with authorized iOS Certificates and devices.</li>
+<li>Generate and download the provisioning file which defaults to the name <code>_profileName_.mobile provision</code>
+(where <em>profileName</em> is the name you specified for the profile).</li>
+<li><p>Specify the downloaded provisioning file path and location in your packager 
+configuration file with the <code>provisionProfile</code> setting:</p>
+<p>&quot;provisionProfile&quot;: &quot;profileName.mobileprovision&quot;</p>
+</li>
+</ol>
+<p>When an application loads on an iOS device, iOS compares the iOS Certificate 
+that is bundled into the application and the device&#39;s UDID against the 
+authorized certificates and device UDIDs found in the provisioning file. 
+If either the bundled iOS Certificate or device UDID are not found, 
+the application is not permitted to load onto the device.</p>
+<p>You can have mulitple provision files, one for each project you work on, 
+or use just one provision file for all your apps. If you have just started 
+a new app, or still are in the early stages of development, the simple thing 
+to do is to use one provision file for all development. Eventually, though, 
+you may find it prudent to create specific provision files for each app as 
+the AppId added in the provisioning portal is compared to what is configured 
+in the app, and only one AppId is permitted per app in the App Store.</p>
+<p>For more information about provisioning files, see the 
+<a href="https://developer.apple.com/ios/manage/overview/index.action" class="external-link" target="_blank">Apple iOS provisioning portal</a>
+(requires an Apple ID and password).</p>
+<h2 id="packaging-_-native_ios_-_package_configuration">Package Configuration<a class="quick-link" href="#packaging-_-native_ios_-_package_configuration"></a></h2>
+<p>The next step is to edit the Sencha packager file with appropriate settings for 
+your environment and application testing. </p>
+<p><strong>Note</strong> If you are using the Touch Cordova or PhoneGap features, the packager
+file is not used. Refer to 
+<a href="../../../cmd/5.x/cordova_phonegap.html">Cordova and PhoneGap app</a>
+for more information.</p>
+<p>In the root directory of your application there should be a packager configuration 
+file - `packager.json&#39;. If this file does not exist, you may easily generate one 
+with this command:</p>
+<pre><code class="language-javascript">sencha app package generate packager.json
+</code></pre><p>You may now edit the packager file. The following configuration properties 
+pertain to iOS development and are required for both <strong>debug</strong> and <strong>release</strong> 
+configurations unless otherwise specified:</p>
+<ul>
+<li><strong>applicationName</strong></li>
+</ul>
+<p>The name you give your application. This name appears under your application&#39;s icon 
+on the device&#39;s home screen.</p>
+<ul>
+<li><strong>applicationId</strong></li>
+</ul>
+<p>Also known as the Bundle ID, this is a unique identifier for your application. 
+For development, all your apps may share the same App ID; however for production, 
+the App ID must be unique for each application you submit to the iTunes store. 
+Normally the format of the ID follows reverse domain name convention of 
+&quot;tld.domain&quot; (for example, com.mydomain.appname).</p>
+<p>The <code>applicationId</code> must match the application ID you 
+enter when creating your App ID.</p>
+<ul>
+<li><strong>bundleSeedId</strong></li>
+</ul>
+<p>This value is the Prefix value found when viewing the App ID in the developer portal. 
+It is a 10-character string and is the same for all your applications in your account.</p>
+<ul>
+<li><strong>configuration</strong></li>
+</ul>
+<p>The type of configuration for your native app build: specify <strong>Debug</strong> for development 
+and testing, <strong>Release</strong> for publishing to the iTunes store.</p>
+<ul>
+<li><strong>platform</strong></li>
+</ul>
+<p>The target platform for your application: specify <strong>iOS</strong> to test on a real device 
+or <strong>iOSSimulator</strong> to view your application in the iOS Emulator.</p>
+<ul>
+<li><strong>deviceType</strong></li>
+</ul>
+<p>The target device for the application. Specify <strong>iPhone</strong> or <strong>iPad</strong>.</p>
+<ul>
+<li><strong>certificatePath</strong></li>
+</ul>
+<p>The path to the location of your certificate file (P12 file).</p>
+<ul>
+<li><strong>provisionFile</strong></li>
+</ul>
+<p>The path to the location of your Provisioning file for this application.</p>
+<ul>
+<li><strong>permissions</strong></li>
+</ul>
+<p>It is safe to leave the permissions set to the default.</p>
+<p>Save your packager file settings.</p>
+<h2 id="packaging-_-native_ios_-_creating_the_packaged_application">Creating the Packaged Application<a class="quick-link" href="#packaging-_-native_ios_-_creating_the_packaged_application"></a></h2>
+<p>Build your native application in the root directory of your application:</p>
+<pre><code class="language-javascript">sencha app build native
+</code></pre><p>This command reads your packager.json configuration file (if you are
+not using Cordova or PhoneGap), builds your application, 
+and places it in the <code>build</code> directory. You can locate the resulting 
+<code>app</code> compressed file in the native build target directory 
+by doing a directory listing:</p>
+<pre><code class="language-javascript">$ cd build/&lt;appname&gt;/native/
+$ ls
+&lt;applicationName&gt;.app
+$
+</code></pre><p>Where <code>&lt;appname&gt;</code> is the application name you specified when you ran your 
+<code>sencha generate app</code> command and <code>&lt;applicationName&gt;</code> is the 
+value you specified for the <code>applicationName</code> property 
+in your <code>packager.json</code> file.</p>
+<h2 id="packaging-_-native_ios_-_copy_and_run_your_application">Copy and Run your Application<a class="quick-link" href="#packaging-_-native_ios_-_copy_and_run_your_application"></a></h2>
+<p>Now the moment you&#39;ve been waiting for to test your application on an iOS device!</p>
+<p>To load your application onto your device: </p>
+<ol>
+<li>Launch iTunes and select the <strong>Apps</strong> screen in your Library.</li>
+<li>Bring up a file browser window and locate the <code>.app</code> directory where your native application was built.</li>
+<li>Drag the <code>.app</code> directory the the Apps screen in iTunes.</li>
+<li>Select your iOS device under the Devices section of iTunes.</li>
+<li>Click the <strong>Apps</strong> tab on your device.</li>
+<li>Locate the app you just copied over to your Apps Library.</li>
+<li>Click <strong>Install</strong>.</li>
+<li>Click the <strong>Apply</strong>button to copy the app from your Library to your iOS device.</li>
+</ol>
+<p>Now switch to your device, find your application and press the icon. 
+You should have your basic application all up and running.</p>
+
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Sencha Touch   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Sencha Touch 2.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/touch-2.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

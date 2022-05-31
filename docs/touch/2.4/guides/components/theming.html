@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theming | Sencha Touch 2.4 </title>
+    <!--  Generated on September, 5 2019 at 15:38 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta property="og:image" content="../../../../assets/images/sencha-200.png" />
+    <meta property="og:title" content="Theming | Sencha Touch 2.4 " />
+    <meta property="og:description" content="Sencha Touch Api - API documentation from Sencha" />
+    <meta property="og:site_name" content="Sencha Documentation" />
+    <meta property="og:url" content="" />
+    <meta name="description" content="Sencha Touch Api - API documentation from Sencha">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/prism.css">
+    <link rel="stylesheet" type="text/css" href="../../../../assets/css/create-app-html-app.css">
+
+
+</head>
+<body class="new-docs  is-guide  has-guides   tree-shown ">
+
+    <!-- SVG Sprite -->
+    <div style="height: 0; width: 0; position: absolute; visibility: hidden;" aria-hidden="true">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" focusable="false">
+            <symbol id="ripply-scott" viewBox="0 0 100 100">
+                <circle id="ripple-shape" cx="1" cy="1" r="1" />
+            </symbol>
+        </svg>
+    </div>
+    <!-- /end sprite -->
+
+    <script type="text/javascript">
+        function getOS() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if(/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            } else if(userAgent.match(/Android/i)) {
+                return 'android';
+            }
+        }
+
+        var isIE8 = false;
+
+        document.body.className += ' ' + getOS();
+
+        window.DocsApp = window.DocsApp || {};
+        DocsApp.meta   = {"majorVer":"2","prodObj":{"title":"Sencha Touch","currentVersion":"2.4","hasVersions":true,"productMenu":["2.4","2.3.1","2.2.1","2.1.1","2.0.1"],"link":"http://docs.sencha.com/{prod}/{ver}/#!/api/{page}","theme":{"2.4":"sencha touch","2.4.0":"sencha touch","2.4.1":"sencha touch"}},"hasApi":false,"hasVersions":true,"hasToolkits":false,"toolkits":false,"toolkit":false,"hasGuides":true,"title":"Sencha Touch","version":"2.4","pageType":"guide","product":"touch","apiProduct":"touch","apiVersion":"2.4","exceptions":{"touch":["2.3.1","2.2.1","2.1.1","2.0.1"],"extjs":["3.4.0","4.0.7","4.1.3","4.2.6"]},"searchPartnerVersions":{},"navTreeName":"Guides","myId":"components/theming","rootPath":"../../","pageName":"Theming","docsRootPath":"../../../../"};
+    </script>
+    <!--[if IE 8]>
+    <script type='text/javascript'>
+        isIE8 = true;
+    </script>
+    <![endif]-->
+    <script type="text/javascript">
+        if (!isIE8) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/prism.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasGuides) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-guidesTree.js\"><\/script>');
+        }
+        if (DocsApp.meta.hasApi) {
+            document.write('<script type=\"text/javascript\" src=\"../../../../assets/js/touch-2.4-apiTree.js\"><\/script>');
+        }
+    </script>
+    <script type="text/javascript" src="../../../../assets/js/ace.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/create-app-html-app.js"></script>
+    <script type="text/javascript" src="../../../../assets/js/productMenu.js"></script>
+
+    <div id="help-wrap">
+        <div class="help-header">
+            Docs Help
+            <div id="help-close" class="icon-btn">
+                <i class="fa fa-close"></i>
+            </div>
+        </div>
+        <div class="classText">
+            <div class="toc classMeta">
+                <h2>Contents</h2>
+                <a class="toc-page-h2" href="#terms-icons-and-labels">Terms, Icons, and Labels</a>
+                <a class="toc-page-h3" href="#access-levels">Access Levels</a>
+                <a class="toc-page-h3" href="#member-types">Member Types</a>
+                <a class="toc-page-h3" href="#member-syntax">Member Syntax</a>
+                <a class="toc-page-h3" href="#member-flags">Member Flags</a>
+                <a class="toc-page-h3" href="#class-icons">Class Icons</a>
+                <a class="toc-page-h3" href="#member-icons">Member Icons</a>
+                <a class="toc-page-h2" href="#navigation-and-features">Navigation and Features</a>
+                <a class="toc-page-h3" href="#class-member-quick-nav-menu">Class Member Quick-Nav Menu</a>
+                <a class="toc-page-h3" href="#getter-and-setter-methods">Getter and Setter Methods</a>
+                <a class="toc-page-h3" href="#history-bar">History Bar</a>
+                <a class="toc-page-h3" href="#search-and-filters">Search and Filters</a>
+                <a class="toc-page-h3" href="#api-doc-class-metadata">API Doc Class Metadata</a>
+                <a class="toc-page-h3" href="#expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</a>
+                <a class="toc-page-h3" href="#desktop-vs-mobile-view">Desktop -vs- Mobile View</a>
+                <a class="toc-page-h3" href="#viewing-the-class-source">Viewing the Class Source</a>
+            </div>
+            <h2 id="terms-icons-and-labels">Terms, Icons, and Labels</h2>
+            <p>Many classes have shortcut names used when creating (instantiating) a class with a
+                configuration object.  The shortcut name is referred to as an <code>alias</code> (or <code>xtype</code> if the
+                class extends Ext.Component).  The alias/xtype is listed next to the class name of
+                applicable classes for quick reference.</p>
+            <h3 id="access-levels">Access Levels</h3>
+            <p>Framework classes or their members may be specified as <code>private</code> or <code>protected</code>.  Else,
+                the class / member is <code>public</code>.  <code>Public</code>, <code>protected</code>, and <code>private</code> are access
+                descriptors used to convey how and when the class or class member should be used.</p>
+            <ul>
+                <li><p><strong>Public</strong> classes and class members are available for use by any other class or
+                    application code and may be relied upon as a stable and persistent within major product
+                    versions.  Public classes and members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Protected</strong> class members are stable <code>public</code> members intended to be used by the
+                    owning class or its subclasses.  Protected members may safely be extended via a subclass.</p>
+                </li>
+                <li><p><strong>Private</strong> classes and class members are used internally by the framework and are not
+                    intended to be used by application developers.  Private classes and members may change or
+                    be omitted from the framework at any time without notice and should not be relied upon in
+                    application logic.</p>
+                </li>
+            </ul>
+            <h3 id="member-types">Member Types</h3>
+            <ul>
+                <li><strong>Config</strong> - The configuration options for a class.</li>
+                <li><strong>Property</strong> - Set once a class is instantiated. *See Read Only below.</li>
+                <li><strong>Method</strong> - Actions that can be performed by a class.  Methods should be read as
+                    instance methods and can only be called from a instance of a given class.  Static methods
+                    that can be called directly from the class itself will have a <code>static</code> label next to the
+                    method name.  *See Static below.</li>
+                <li><strong>Event</strong> - Events are specific to the framework event system allowing for classes to
+                    programmatically raise an event to be handled by one or more event handler methods.  DOM
+                    events, while handled by the framework event system, are not specifically described
+                    within the API documentation.  *For DOM events refer to the
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event reference</a> page from MDN.</li>
+                <li><strong>Theme Variable</strong> - Variables used by the visual theme engine employed by the
+                    framework.</li>
+                <li><strong>Theme Mixin</strong> - Functions used by the visual theme engine employed by the framework
+                    and may use values set in various Theme Variables.</li>
+            </ul>
+            <h3 id="member-syntax">Member Syntax</h3>
+            <p>Below is an example class member that we can disect to show the syntax of a class member
+                (the lookupComponent method as viewed from the Ext.button.Button class in this case).</p>
+            <div style="position: relative;" class="show-inherited show-protected members">
+                <div style="border: 1px solid #E4E4E4;" class="classmembers member-protected isNotStatic isInherited member-expanded" data-member-name="lookupComponent">
+                    <div class="collapse-toggle">
+                        <i class="fa fa-caret-right"></i>
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="source-class"><a href="javascript:void(0);">Ext.container.Container</a><div class="viewSource"><a href="javascript:void(0);"></a><a target="_blank" href="javascript:void(0);">view source</a></div></div>
+                    <div class="member-header">
+                        <a href="javascript:void(0);" class="member-name-link"><span data-ref="method-lookupComponent" class="member-name"><strong>lookup</strong>Component</span></a>
+                        <span class="params-list"> ( item )</span> : <span class="memberType">Ext.Component</span>
+                        <div class="member-tags"><span class="protected">protected</span></div>
+                    </div>
+                    <p>Called when a raw config object is added to this container either during initialization of the <a href="javascript:void(0);">items</a> config,
+                        or when new items are <a href="javascript:void(0);">added), or {@link #insert inserted</a>.</p>
+                    <p>This method converts the passed object into an instanced child component.</p>
+                    <p>This may be overridden in subclasses when special processing needs to be applied to child creation.</p>
+                    <div class="detail-header">Parameters</div>
+                    <p><span class="params-list">item</span> :
+                        <span class="memberType">&nbsp;Object</span>
+                    </p>
+                    <div class="params-desc"><p>The config object being added.</p></div>
+                    <div class="detail-header">Returns</div>
+                    <span style="margin-left:12px;" class="memberType">Ext.Component</span>
+                    <div class="return-desc"><p>The component to be added.</p>
+                    </div>
+                </div>
+            </div>
+    
+            <p>Let's look at each part of the member row:</p>
+            <ul>
+                <li><strong>Expand/Collapse</strong> - On the left-hand size of the member row is a control used to
+                    expand and collapse each member row to show / hide member details.</li>
+                <li><strong>Member Name</strong> - The name of the class member (<code>lookupComponent</code> in this example)</li>
+                <li><strong>Method Param</strong> - Any required or optional params used by a method (or passed to an
+                    event handler method) will be listed next to the method name within parenthesis
+                    (<code>( item )</code> in this example)</li>
+                <li><strong>Return type</strong> - The class instance or javascript object returned by the method or
+                    property (<code>Ext.Component</code> in this case).  This may be omitted for methods that do not
+                    return anything other than <code>undefined</code> or may display as multiple possible values
+                    separated by a forward slash <code>/</code> signifying that what is returned may depend on the
+                    results of the method call (i.e. a method may return a Component if a get method calls is
+                    successful or <code>false</code> if unsuccessful which would be displayed as
+                    <code>Ext.Component/Boolean</code>).</li>
+                <li><strong>Flags</strong> - Any flags applicable to the member will be displayed next (<code>PROTECTED</code> in
+                    this example - see the Flags section below)</li>
+                <li><strong>Member Origin</strong> - On the right-hand side of the member row is the class where the
+                    member was initially described (<code>Ext.container.Container</code> in this example).  The source
+                    class will be displayed as a blue link if the member originates from the current class
+                    and gray if it is inherited from an ancestor or mixed-in class.</li>
+                <li><strong>Member Source</strong> - On the right-hand side below the member origin class is a link to
+                    view the member's source (<code>view source</code> in the example)</li>
+                <li><strong>Params List</strong> - Each param for a class method will be listed using the same name
+                    found above in parenthesis, the type of class or object expected, and a description of
+                    the param (<code>item : Object</code> in the example).</li>
+                <li><strong>Returns</strong> - If a class returns a value other than <code>undefined</code> a "Returns" section
+                    will note the type of class or object returned and a description (<code>Ext.Component</code> in the
+                    example)</li>
+                <li><strong>Since</strong> (<em>not shown in the example</em>) - Some members will show which version of the
+                    product the member was first introduced (i.e. <code>Available since 3.4.0</code> - <em>not pictured in
+                        the example</em>) just after the member description</li>
+                <li><strong>Default</strong> (<em>not shown in the example</em>) - Configs often show the default config value
+                    to be applied to a class instance if not overridden (i.e. <code>Defaults to: false</code>)</li>
+            </ul>
+            <h3 id="member-flags">Member Flags</h3>
+            <p>The API documentation uses a number of flags to further commnicate the class member's
+                function and intent.  The label may be represented by a text label, an abbreviation, or
+                an icon.</p>
+            <ul>
+                <li><strong>Required</strong> - Required config when instantiating a class</li>
+                <li><strong>Bindable</strong> - The config has a setter which allows this config to be set via ViewModel
+                    binding</li>
+                <li><strong>Read Only</strong> - The property may be read, but cannot be used to configure /
+                    re-configure a class instance at runtime</li>
+                <li><strong>Singleton</strong> - Singleton classes are instantiated immediately once defined and may not
+                    be instantiated manually</li>
+                <li><strong>Static</strong> - A static method or property is a method or property belonging to the class
+                    itself, not an instance of the class</li>
+                <li><strong>Chainable</strong> - Refers to methods that return the class instance back when called.<br>This enables chained method calls like: <code>classInstance.method1().method2().etc();</code></li>
+                <li><strong>Deprecated</strong> - A class or member that is scheduled for removal in a future
+                    framework version and is provided in the current version for backwards compatibility.<br>Deprecated classes and members will have a message directing you to the preferred class /
+                    method going forward.</li>
+                <li><strong>Removed</strong> - A removed class or member that exists in documentation only as a
+                    reference for users upgrading between framework versions</li>
+                <li><strong>Template</strong> - A method defined within a base class designed to be overridden by
+                    subclasses</li>
+                <li><strong>Abstract</strong> - A class or member may be be defined as abstract.  Abstract classes and
+                    members establish a class structure and provide limited, if any, code.  Class-specific
+                    code will be furnished via overrides in subclasses.</li>
+                <li><strong>Preventable</strong> - Events marked preventable will not fire if <code>false</code> is returned from
+                    an event handler</li>
+            </ul>
+            <h3 id="class-icons">Class Icons</h3>
+            <p><span class="icon-demo class-icon fa fa-cube"></span> - Indicates a framework class  </p>
+            <p><span class="icon-demo singleton-icon fa fa-cube"></span> - A singleton framework class. *See the
+                singleton flag for more information  </p>
+            <p><span class="icon-demo component-icon fa fa-gear"></span> - A component-type framework class (any
+                class within the Ext JS framework that extends Ext.Component)  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h3 id="member-icons">Member Icons</h3>
+            <p><span class="icon-demo fa fa-cubes"></span> - Indicates a class member of type <code>config</code>  </p>
+            <p><span class="icon-demo fa fa-book"></span> - Indicates a class member of type <code>property</code>  </p>
+            <p><span class="icon-demo fa fa-object-group"></span> - Indicates a class member of type
+                <code>method</code>  </p>
+            <p><span class="icon-demo fa fa-bolt"></span> - Indicates a class member of type <code>event</code>  </p>
+            <p><span class="icon-demo fa fa-paint-brush"></span> - Indicates a class member of type
+                <code>theme variable</code>  </p>
+            <p><span class="icon-demo fa fa-tint"></span> - Indicates a class member of type
+                <code>theme mixin</code>  </p>
+            <p><span class="icon-demo display-new"></span> - Indicates that the class, member, or guide
+                is new in the currently viewed version</p>
+            <h2 id="navigation-and-features">Navigation and Features</h2>
+            <h3 id="class-member-quick-nav-menu">Class Member Quick-Nav Menu</h3>
+            <p>Just below the class name on an API doc page is a row of buttons corresponding to the
+                types of members owned by the current class.  Each button shows a count of members by
+                type (this count is updated as filters are applied).  Clicking the button will navigate
+                you to that member section.  Hovering over the member-type button will reveal a popup
+                menu of all members of that type for quick navigation.</p>
+            <h3 id="getter-and-setter-methods">Getter and Setter Methods</h3>
+            <p>Getting and setter methods that correlate to a class config option will show up in the
+                methods section as well as in the configs section of both the API doc and the member-type
+                menus just beneath the config they work with.  The getter and setter method documentation
+                will be found in the config row for easy reference.</p>
+            <h3 id="history-bar">History Bar</h3>
+            <p>Your page history is kept in localstorage and displayed (using the available real estate)
+                just below the top title bar.  By default, the only search results shown are the pages
+                matching the product / version you're currently viewing.  You can expand what is
+                displayed by clicking on the <span class="icon-demo history-config"></span> button on the
+                right-hand side of the history bar and choosing the "All" radio option.  This will show
+                all recent pages in the history bar for all products / versions.</p>
+            <p>Within the history config menu you will also see a listing of your recent page visits.
+                The results are filtered by the "Current Product / Version" and "All" radio options.
+                Clicking on the <span class="icon-demo history-clear"></span> button will clear the history bar as
+                well as the history kept in local storage.</p>
+            <p>If "All" is selected in the history config menu the checkbox option for "Show product
+                details in the history bar" will be enabled.  When checked, the product/version for each
+                historic page will show alongside the page name in the history bar.  Hovering the cursor
+                over the page names in the history bar will also show the product/version as a tooltip.</p>
+            <h3 id="search-and-filters">Search and Filters</h3>
+            <p>Both API docs and guides can be searched for using the search field at the top of the
+                page.</p>
+            <p>On API doc pages there is also a filter input field that filters the member rows
+                using the filter string.  In addition to filtering by string you can filter the class
+                members by access level, inheritance, and read only.  This is done using the checkboxes at the top of
+                the page.</p>
+            <p>The checkbox at the bottom of the API class navigation tree filters the class list to
+                include or exclude private classes.</p>
+            <p>Clicking on an empty search field will show your last 10 searches for quick navigation.</p>
+            <h3 id="api-doc-class-metadata">API Doc Class Metadata</h3>
+            <p>Each API doc page (with the exception of Javascript primitives pages) has a menu view of
+                metadata relating to that class.  This metadata view will have one or more of the
+                following:</p>
+            <ul>
+                <li><strong>Alternate Name</strong> - One or more additional class name synonymns (in Ext JS 6.0.0 the
+                    <code>Ext.button.Button</code> class has an alternate class name of <code>Ext.Button</code>).  Alternate class
+                    names are commonly maintained for backward compatibility.</li>
+                <li><strong>Hierarchy</strong> - The hierararchy view lists the inheritance chain of the current class
+                    up through its ancestor classes up to the root base class.</li>
+                <li><strong>Mixins</strong> - A list of classes that are mixed into the current class</li>
+                <li><strong>Inherited Mixins</strong> - A list of classes that are mixed into an ancestor of the current
+                    class</li>
+                <li><strong>Requires</strong> - All classes required to be defined for the class to be instantiated</li>
+                <li><strong>Uses</strong> - A list of classes potentially used by the class at some point in its
+                    lifecycle, but not necessarily requried for the class to initially be instantiated</li>
+                <li><strong>Subclasses</strong> - Classes that extend the current class</li>
+            </ul>
+            <h3 id="expanding-and-collapsing-examples-and-class-members">Expanding and Collapsing Examples and Class Members</h3>
+            <p>Runnable examples (Fiddles) are expanded on a page by default.  You can collapse and
+                expand example code blocks individually using the arrow on the top-left of the code
+                block.  You can also toggle the collapse state of all examples using the toggle button on
+                the top-right of the page.  The toggle-all state will be remembered between page loads.</p>
+            <p>Class members are collapsed on a page by default.  You can expand and collapse members
+                using the arrow icon on the left of the member row or globally using the expand /
+                collapse all toggle button top-right.</p>
+            <h3 id="desktop-vs-mobile-view">Desktop -vs- Mobile View</h3>
+            <p>Viewing the docs on narrower screens or browsers will result in a view optimized for a
+                smaller form factor.  The primary differences between the desktop and "mobile" view are:</p>
+            <ul>
+                <li>Global navigation will be located in a menu on the left-hand side accessible via the
+                    hamburger menu icon.  The menu houses the following (on most pages):<ul>
+                        <li>The name of the current product (as a link to the product landing page)</li>
+                        <li>The Sencha icon used to navigate back to the documentation home page</li>
+                        <li>The product menu drop-down button</li>
+                        <li>Tabs of navigation trees for the API docs and guides</li>
+                    </ul>
+                </li>
+                <li>Current context navigation and tools is located on the right-hand side accessible via
+                    the gear icon.  The context menu houses teh following:<ul>
+                        <li>The global search input field</li>
+                        <li>(<em>API doc</em>) A "Filters" tab with the member filter, expand / collapse all examples
+                            button, expand / collapse all member rows button, the access level filter checkboxes,
+                            and the counts of each member</li>
+                        <li>(<em>API doc</em>) A "Related Classes" tab containing the menu of metadata related to the
+                            current class</li>
+                        <li>(<em>Guides</em>) The table of contents for the guide</li>
+                    </ul>
+                </li>
+            </ul>
+            <h3 id="viewing-the-class-source">Viewing the Class Source</h3>
+            <p>The class source can be viewed by clicking on the class name at the top of an API doc
+                page.  The source for class members can be viewed by clicking on the "view source" link
+                on the right-hand side of the member row.</p>
+    
+        </div>
+    </div>
+
+    <div id="header">
+        <div class="home-link">
+            <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+        </div>
+        <div class="logo">
+            <a href="https://www.sencha.com"><img height="32" src="../../../../assets/images/sencha_logo_thumb.png"/></a>
+        </div>
+        <span id="mobile-main-nav-menu-btn" class="fa fa-bars"></span>
+        <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip-tl-bl tooltip landing-product-menu-btn">
+            <div class="callout callout-b"></div>
+        </span>
+            <div class="page-title">Theming</div>
+
+        <span id="mobile-context-menu-btn" class="fa fa-cog"></span>
+    </div>
+
+    <div id="centerContent">
+        <div id="history-nav">
+            <span id="history-config" class="icon-btn history-config tooltip tooltip-tr-br" data-tip="Configure / Clear History">
+                <i class="fa fa-history"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="class-tree-ct" class="class-tree">
+            <h2 class="product-header">
+                <div class="home-link">
+                    <a href="http://docs.sencha.com"><span class="fa fa-book"></span></a>
+                </div>
+                <div class="logo">
+                    <a href="https://www.sencha.com"><img src="../../../../assets/images/sencha_logo1x.png"/></a>
+                </div>
+                <a href="../../index.html">Sencha Touch 2.4 </a>
+                <span data-tip="Product / Version Menu" class="fa fa-angle-down product-menu-btn product-menu-btn-wrap tooltip tooltip-tl-bl"><div class="callout callout-b"></div></span>
+            </h2>
+            <div id="tree-header" class="pre-load">
+                <div id="hide-class-tree" class="icon-btn">
+                    <i class="fa fa-close"></i>
+                    <i class="fa fa-bars"></i>
+                </div>
+            </div>
+            <div id="tree-scroller">
+                <div id="tree" class="show-private show-protected is-tree ">
+                    <div id="tree-sub-header"></div>
+                </div>
+                    <div class="private-class-toggle-ct">
+                        <label for="private-class-toggle" class="pointer gray">Show private classes</label>
+                        <input id="private-class-toggle" type="checkbox" name="privateClassToggle" />
+                    </div>
+            </div>
+        </div>
+
+        <a href="#" id="back-to-top">
+            <div class="fa fa-angle-up"></div>
+            <br>
+            top
+        </a>
+
+        <div id="rightMembers">
+<div class="context-menu-ct">
+    <div class="context-header">
+        <div id="hide-context-menu" class="fa fa-caret-right"></div>
+    </div>
+
+    <div class="search">
+        <form autocomplete="off">
+    
+            <input type="text" type="search" placeholder="search" id="searchtext" tabindex="1">
+            <i id="filtersubmit" class="fa fa-search"></i>
+            <span id="help-btn" data-tip="Docs Help" class="icon-btn tooltip tooltip-tr-br"><div class="callout callout-b"></div>
+                <i class="fa fa-question fa-inverse"></i>
+            </span>
+        </form>
+    </div>
+
+    <div id="toc-context-ct">
+        <!-- context content added at runtime -->
+    </div>
+</div>
+<div class="guide-body-wrap">
+    <div class="body-wrap-inner">
+        <div id="toggleExamples" class="icon-btn tooltip tooltip-tr-br" data-collapse="Collapse All Examples" data-expand="Expand All Examples">
+            <i class="fa fa-code"></i>
+            <div class="callout callout-b"></div>
+        </div>
+        <div class="classText">
+                <div class="toc">
+                    <h2>Contents</h2>
+                        <a class="toc-page-h2 " href="#components-_-theming_-_defining_a_platform_for_your_app">Defining a Platform for Your App</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_specifying_values_for_a_platform_with_platformconfig">Specifying Values for a Platform With platformConfig</a>
+                        <a class="toc-page-h2 " href="#components-_-theming_-_themes">Themes</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_upgrading_themes_from_sencha_touch_2_1">Upgrading Themes From Sencha Touch 2.1</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_base_theme">Base Theme</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_theme_examples">Theme Examples</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_using_an_existing_theme">Using an Existing Theme</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_extending_an_existing_theme">Extending an Existing Theme</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_creating_a_new_theme">Creating a New Theme</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_custom_theme_tips">Custom Theme Tips</a>
+                        <a class="toc-page-h2 " href="#components-_-theming_-_list_component">List Component</a>
+                        <a class="toc-page-h2 " href="#components-_-theming_-_icon_fonts">Icon Fonts</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_using_the_pictos_font">Using the Pictos Font</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_using_other_icon_fonts">Using Other Icon Fonts</a>
+                        <a class="toc-page-h3 " href="#components-_-theming_-_creating_a_custom_font">Creating a Custom Font</a>
+                        <a class="toc-page-h2 " href="#components-_-theming_-_adding_your_own_icons_to_your_application">Adding Your Own Icons to Your Application</a>
+                </div>
+            <h1 id="components-_-theming_-_theming_in_sencha_touch">Theming in Sencha Touch<a class="quick-link" href="#components-_-theming_-_theming_in_sencha_touch"></a></h1>
+<p>Sencha Touch theming lets you group together CSS styles as a theme so that you can tailor
+your app&#39;s appearance to match the visual cues of a platform or operating system. In
+addition, 
+theming provides access to icons as fonts, which lets you display and scale icons in your
+app
+quickly with reduced overhead on your app. </p>
+<p>Sencha Touch contains the following themes: </p>
+<ul>
+<li>Cupertino theme, which provides styles for iOS7</li>
+<li>CupertinoClassic theme, which provides styles for pre-iOS7 phones.</li>
+<li>MountainView theme, which provides styles for Android  </li>
+<li>BlackBerry theme, which provides styles for BlackBerry</li>
+</ul>
+<p>These themes augment the existing standard Sencha Touch and Windows Phone themes.</p>
+<p>For information on optimizing the use of themes in CSS, see 
+<a href="http://www.sencha.com/blog/4-tricks-for-smaller-css-in-touch-2.2">4 Tricks for
+Smaller CSS</a>.</p>
+<h2 id="components-_-theming_-_defining_a_platform_for_your_app">Defining a Platform for Your App<a class="quick-link" href="#components-_-theming_-_defining_a_platform_for_your_app"></a></h2>
+<p>Sencha Touch lets you define platforms so that you can load resources in your application 
+depending on the platform on which your app runs. </p>
+<p>In the following example from an application&#39;s <code>app.json</code> file, the application loads the 
+<code>sencha-touch.css</code> file when the app runs on Chrome, Safari, iOS, Android, or Firefox:</p>
+<pre><code class="language-javascript">&quot;css&quot;: [
+    {
+        &quot;path&quot;: &quot;resources/css/sencha-touch.css&quot;,
+        &quot;platform&quot;: [&quot;chrome&quot;, &quot;safari&quot;, &quot;ios&quot;, &quot;ios-classic&quot;, &quot;android&quot;, &quot;firefox&quot;]
+    }
+]
+</code></pre><p>You can specify multiple platforms and use it to load JS resources. In this example, the
+<code>vendorfiles.js</code> 
+resource loads when the platform is Chrome, Safari, or iOS:</p>
+<pre><code class="language-javascript">&quot;js&quot;: [
+    {
+        &quot;path&quot;: &quot;vendorfiles.js&quot;,
+        &quot;platform&quot;: [&quot;chrome&quot;, &quot;safari&quot;, &quot;ios&quot;, &quot;ios-classic&quot;]
+    }
+]
+</code></pre><p>Each loads only if the platform of the device running the app matches a platform you
+specify 
+for the resource. </p>
+<p>You can test this functionality by using the <code>platform</code> parameter in a URL:</p>
+<pre><code class="language-javascript">http://localhost/sdk/touch/examples/kitchensink/index.html?platform=ie10
+</code></pre><p>You can also detect which platform the device is running on from within your application
+by using 
+<code>platformConfig</code>.</p>
+<p>The list of available platforms are:</p>
+<ul>
+<li>android</li>
+<li>blackberry</li>
+<li>chrome</li>
+<li>desktop</li>
+<li>firefox</li>
+<li>ie10</li>
+<li>ios</li>
+<li>ios-classic</li>
+<li>phone</li>
+<li>safari</li>
+<li>tablet</li>
+</ul>
+<p>The following example shows an app.json CSS statement 
+for the desktop, Windows, BlackBerry, Cupertino, CupertinoClassic, and MountainView
+themes:</p>
+<pre><code class="language-javascript">&quot;css&quot;: [
+    {
+        &quot;path&quot;: &quot;resources/css/sencha-touch.css&quot;,
+        &quot;platform&quot;: [&quot;desktop&quot;],
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/wp.css&quot;,
+        &quot;platform&quot;: [&quot;ie10&quot;],
+        &quot;theme&quot;: &quot;Windows&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/cupertino.css&quot;,
+        &quot;platform&quot;: [&quot;ios&quot;],
+        &quot;theme&quot;: &quot;Cupertino&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/cupertino-classic.css&quot;,
+        &quot;platform&quot;: [&quot;ios-classic&quot;],
+        &quot;theme&quot;: &quot;CupertinoClassic&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/mountainview.css&quot;,
+        &quot;platform&quot;: [&quot;android&quot;],
+        &quot;theme&quot;: &quot;MountainView&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/bb10.css&quot;,
+        &quot;platform&quot;: [&quot;blackberry&quot;],
+        &quot;theme&quot;: &quot;Blackberry&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    }
+],
+</code></pre><h3 id="components-_-theming_-_specifying_values_for_a_platform_with_platformconfig">Specifying Values for a Platform With platformConfig<a class="quick-link" href="#components-_-theming_-_specifying_values_for_a_platform_with_platformconfig"></a></h3>
+<p>The <code>platformConfig</code> configuration lets you define values for a platform. </p>
+<p>The config system in Sencha Touch is incredibly powerful and lets you quickly develop
+applications 
+with lots of functionality. For more information about the config system, 
+read the <a href="../core_concepts/class_system.html">Class System</a> guide.</p>
+<p>The following example defines a new class <code>Example.view.Login</code> as a simple login form:</p>
+<pre><code class="language-javascript">Ext.define(&#39;Example.view.Login&#39;, {
+    extend: &#39;Ext.panel.FieldSet&#39;,
+
+    config: {
+        title: &#39;Login&#39;
+    },
+
+    platformConfig: [{
+        platform: &#39;ie10&#39;,
+        title: &#39;Microsoft Login&#39;
+    }]
+});
+</code></pre><p>In this example, the value for the FieldSet title is specfied as <code>Login</code>, however by 
+using <code>platformConfig</code>, you can set the value of the title based on the platform - in this
+case, <code>ie10</code>.</p>
+<p>This is a very simple example. A more complex example would display your view differently,
+or change the items in your view, based on the platform you are running.</p>
+<h2 id="components-_-theming_-_themes">Themes<a class="quick-link" href="#components-_-theming_-_themes"></a></h2>
+<p>Themes are a set of CSS styles you can set
+to change an application&#39;s appearance for a device or platform. You can reference the
+styles
+as resources in your <code>app.json</code> file for your application. </p>
+<p><strong>Getting Started</strong></p>
+<p>Sencha Touch provides these themes:</p>
+<ul>
+<li>Base theme you can customize</li>
+<li>Sencha Touch theme</li>
+<li>Cupertino theme with iOS styles</li>
+<li>Mountain View theme with Android styles</li>
+<li>BlackBerry 10 theme</li>
+<li>IE10 theme for Windows Phone and Surface</li>
+</ul>
+<p>To code a theme, use Compass and Sass, which are provided when you install 
+<a href="http://www.sencha.com/products/sencha-cmd/download" class="external-link" target="_blank">Sencha Cmd</a>.</p>
+<p>In the following example, the <code>Cupertino</code> theme loads only when the platform is iOS. When
+the iOS platform loads, 
+your app knows that the current theme is <code>Cupertino</code>:</p>
+<pre><code class="language-javascript">&quot;css&quot;: [
+    {
+        &quot;path&quot;: &quot;resources/css/sencha-touch.css&quot;,
+        &quot;platform&quot;: [&quot;ios&quot;],
+        &quot;Theme&quot;: &quot;Cupertino&quot;
+    }
+]
+</code></pre><p>Within your application, you can access a theme name by using <code>Ext.theme.name</code>.
+If you do not define a theme, the theme name is <code>Default</code>.
+You can test themes by using the <code>theme</code> parameter in the URL when running your app:</p>
+<pre><code class="language-javascript">http://localhost/sdk/touch/examples/kitchensink/index.html?theme=Apple
+</code></pre><p><strong>Important:</strong> The framework uses the <code>Windows</code> and <code>Blackberry</code> themes to change the
+functionality of the framework <strong>if</strong> that theme is in use. If you want to replicate that functionality,
+and you intend to use either the <code>Windows</code> or <code>Blackberry</code> themes, you should also use those names.</p>
+<h3 id="components-_-theming_-_upgrading_themes_from_sencha_touch_2_1">Upgrading Themes From Sencha Touch 2.1<a class="quick-link" href="#components-_-theming_-_upgrading_themes_from_sencha_touch_2_1"></a></h3>
+<p>There were many changes from Sencha Touch 2.1 to 2.2, but the upgrade path is rather
+simple.</p>
+<p>The most important change to be aware of is the move away from using mixins for each component. </p>
+<p>We found that using mixins for each component was quite slow when compiling your Sass, 
+so we decided to simply move to using <code>@import</code> to just include each component.</p>
+<p>Before your stylesheet would have looked like this:</p>
+<pre><code class="language-javascript">@import &#39;sencha-touch/default/all&#39;;
+
+@include sencha-panel;
+@include sencha-buttons;
+// and other components…
+</code></pre><p>But in Touch 2.2 it looks like this:</p>
+<pre><code class="language-javascript">@import &#39;sencha-touch/default&#39;;
+
+@import &#39;sencha-touch/default/Panel&#39;;
+@import &#39;sencha-touch/default/Button&#39;;
+// and other components
+</code></pre><p>Instead of using <code>@include</code> to include a component mixin, use <code>@import</code> to import the
+component.</p>
+<p>If you want to include all default components in Sencha Touch 2.2, you can use the following code:</p>
+<pre><code class="language-javascript">@import &#39;sencha-touch/default&#39;;
+@import &#39;sencha-touch/default/all&#39;;
+</code></pre><p>However you may want to import from a separate file that includes these imports as
+described in <a href="http://www.sencha.com/blog/4-tricks-for-smaller-css-in-touch-2.2">4 Tricks for Smaller CSS</a>.</p>
+<p>The same goes for when you are using other themes. </p>
+<p>Windows:</p>
+<pre><code class="language-javascript">@import &#39;sencha-touch/windows&#39;;
+@import &#39;sencha-touch/windows/all&#39;;
+</code></pre><p>BlackBerry:</p>
+<pre><code class="language-javascript">@import &#39;sencha-touch/bb10&#39;;
+@import &#39;sencha-touch/bb10/all&#39;;
+</code></pre><p>To include only the base theme:</p>
+<pre><code class="language-javascript">@import &#39;sencha-touch/base&#39;;
+@import &#39;sencha-touch/base/all&#39;;
+</code></pre><p>The base theme does not have styling like the Default, Cupertino, Mountain View, Windows,
+and BlackBerry themes.</p>
+<p><a name="BaseTheme"></a></p>
+<h3 id="components-_-theming_-_base_theme">Base Theme<a class="quick-link" href="#components-_-theming_-_base_theme"></a></h3>
+<p>Sencha Touch 2.2 introduced the base theme, which is essentially the required styling to
+lay out components of Sencha Touch. There are no colors or custom styling like gradients and
+margins and padding. It is simply the starting point of actual themes. </p>
+<p>Developing themes for Sencha Touch was made simple with the use of Sass, Compass and their
+features. This lets you dynamically change colors and measurements using variables, and create new
+UIs by using mixins. This rapidly speeds up development of custom themes based on the default Sencha Touch
+theme.</p>
+<p>In previous Touch versions, if you wanted to create highly customized themes, you had to
+override a lot of the styling of the Default theme by using lots of hacks like <code>!important</code>.</p>
+<p>Advantages of the new base theme:</p>
+<ul>
+<li><p>No layouts for Sencha Touch components. These are already handled for you in the base. 
+All you have to do is style a component for how you want it.</p>
+</li>
+<li><p>No overriding default styles, because there are none. The base theme only 
+lays out components, which means it is actually usable. You need to build on the base
+theme to style it, but there is no longer any need to use hacks to remove the existing styling. 
+Which in turn, reduces the file style of your CSS because you no longer have all that
+default styling.</p>
+</li>
+<li><p>Faster CSS compiles. Along with reduced size, themes provide faster compile times. 
+Sencha Touch uses Compass to compile 
+stylesheets from Sass to CSS. In older Sencha Touch versions, Compass could take multiple
+seconds to compile because it had to compile the default theme along with all your custom styling.</p>
+</li>
+</ul>
+<p>Now that the base is separate, you only have to compile your custom styling - which means 
+compiling themes has dropped to fractions of seconds. This makes writing stylesheets much
+quicker.</p>
+<p><img src="images/base-theme.png"/></p>
+<h3 id="components-_-theming_-_theme_examples">Theme Examples<a class="quick-link" href="#components-_-theming_-_theme_examples"></a></h3>
+<p>The following illustrates differences in buttons for the BlackBerry, Cupertino, and
+MountainView themes.
+For a complete list of each theme, see the KitchenSink example.</p>
+<table>
+    <tr>
+        <th>BlackBerry Theme</th>
+        <th>Cupertino Theme</th>
+        <th>Mountain View Theme</th>
+    </tr>
+    <tr>
+        <td><img src='images/BlackBerryButtons.png'/></td>
+        <td><img src='images/CupertinoButtons.png'/></td>
+        <td><img src="images/MountainViewButtons.png"/></td>
+    </tr>
+</table>
+
+<h3 id="components-_-theming_-_using_an_existing_theme">Using an Existing Theme<a class="quick-link" href="#components-_-theming_-_using_an_existing_theme"></a></h3>
+<p>Using one of the default themes in your Sencha Touch application is simple. 
+Just include the appropriate theme stylesheet into your <code>app.json</code> file:</p>
+<pre><code class="language-javascript">&quot;css&quot;: [
+    {
+        &quot;path&quot;: &quot;resources/css/wp.css&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    }
+]
+</code></pre><p>This example includes only the Windows theme in the wp.css file. Ensure that the path
+points 
+to the correct stylesheet within the SDK folder.</p>
+<p>If you want to load different themes depending on the platform, include them in your
+<code>app.json</code> file:</p>
+<pre><code class="language-javascript">&quot;css&quot;: [
+    {
+        &quot;path&quot;: &quot;resources/css/sencha-touch.css&quot;,
+        &quot;platform&quot;: [&quot;chrome&quot;, &quot;safari&quot;, &quot;ios&quot;, &quot;android&quot;, &quot;firefox&quot;],
+        &quot;theme&quot;: &quot;Default&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/wp.css&quot;,
+        &quot;platform&quot;: [&quot;ie10&quot;],
+        &quot;theme&quot;: &quot;Windows&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    },
+    {
+        &quot;path&quot;: &quot;resources/css/bb10.css&quot;,
+        &quot;platform&quot;: [&quot;blackberry&quot;],
+        &quot;theme&quot;: &quot;Blackberry&quot;,
+        &quot;update&quot;: &quot;delta&quot;
+    }
+]
+</code></pre><p>In this example, the Windows theme loads on the &quot;ie10&quot; platform and the BlackBerry theme
+loads on &quot;blackberry&quot;. </p>
+<p>All other devices uses the Default Sencha Touch theme.</p>
+<h3 id="components-_-theming_-_extending_an_existing_theme">Extending an Existing Theme<a class="quick-link" href="#components-_-theming_-_extending_an_existing_theme"></a></h3>
+<p>Extending one of the default themes in Sencha Touch is also simple. </p>
+<p>To set up a custom theme:</p>
+<ol>
+<li><p>Open your <code>resources/sass/app.scss</code> stylesheet which is automatically generated when
+creating an application using <a href="http://www.sencha.com/products/sencha-cmd/download" class="external-link" target="_blank">Sencha Cmd</a>.</p>
+</li>
+<li><p>Include the Sencha Touch theme you want. This example uses the default theme:</p>
+<pre><code class="language-javascript"> @import &#39;sencha-touch/default&#39;;
+ @import &#39;sencha-touch/default/all&#39;;
+</code></pre><p> Or the Windows theme:</p>
+<pre><code class="language-javascript"> @import &#39;sencha-touch/windows&#39;;
+ @import &#39;sencha-touch/windows/all&#39;;
+</code></pre></li>
+<li><p>Add your custom Sass styles.</p>
+</li>
+<li><p>Compile and launch your application:</p>
+<pre><code class="language-javascript"> compass compile resources/sass
+</code></pre></li>
+</ol>
+<h3 id="components-_-theming_-_creating_a_new_theme">Creating a New Theme<a class="quick-link" href="#components-_-theming_-_creating_a_new_theme"></a></h3>
+<p>Creating a new theme is very similiar to extending a default theme, 
+except that you only want to include the base theme. </p>
+<p>To create a new theme:</p>
+<ol>
+<li><p>Open your <code>resources/sass/app.scss</code> stylesheet which is automatically generated when 
+creating an application using <a href="http://www.sencha.com/products/sencha-cmd/download" class="external-link" target="_blank">Sencha Cmd</a>.</p>
+</li>
+<li><p>Include the Sencha Touch base theme:</p>
+<pre><code class="language-javascript"> @import &#39;sencha-touch/base&#39;;
+ @import &#39;sencha-touch/base/all&#39;;
+</code></pre></li>
+</ol>
+<p>Now you can write the custom Sass required to theme your app.</p>
+<h3 id="components-_-theming_-_custom_theme_tips">Custom Theme Tips<a class="quick-link" href="#components-_-theming_-_custom_theme_tips"></a></h3>
+<ul>
+<li><p>Sencha Touch components always have a baseCls that matches the name of the component.
+Some example of this are:</p>
+<ul>
+<li><code>Ext.List</code> -&gt; <code>.x-list</code></li>
+<li><code>Ext.field.Text</code> -&gt; <code>.x-field-text</code></li>
+<li><code>Ext.field.Numer</code> -&gt; <code>.x-field-number</code></li>
+<li><code>Ext.panel.Form</code> -&gt; <code>.x-form-panel</code></li>
+</ul>
+</li>
+<li><p>If you are not familiar with the DOM structure of Sencha Touch applications, 
+use the Web Inspector of your browser to inspect the DOM to determine what elements you
+need to style.</p>
+</li>
+<li><p>You can also use the Web Inspector to detect what the base theme uses as selectors:</p>
+</li>
+<li><p>Navigate to a list example with just the base theme</p>
+</li>
+<li><p>Select a list item and open it in the Web Inspector</p>
+<p> <img src="images/list-select-1.png"/></p>
+</li>
+<li><p>Navigate the DOM until you see the selected class &#39;x-item-selected&#39; (it may even be the
+select DOM element)</p>
+<p> <img src="images/list-select-2.png"/></p>
+</li>
+<li><p>Use the styles panel to see and copy the selector used in the base theme.</p>
+<p> <img src="images/list-select-3.png"/></p>
+</li>
+<li><p>Paste the selector into your <code>app.scss</code> file and style as needed:</p>
+<pre><code class="language-javascript"> .x-list .x-list-item.x-item-selected .x-dock-horizontal,
+ .x-list .x-list-item.x-item-selected.x-list-item-tpl {
+     color: red;
+ }
+</code></pre></li>
+</ul>
+<h2 id="components-_-theming_-_list_component">List Component<a class="quick-link" href="#components-_-theming_-_list_component"></a></h2>
+<p>The List component in Sencha Touch has been optimized to ensure performance is best in
+every scenario. </p>
+<p>Lists now have these modes:</p>
+<ul>
+<li>Normal items</li>
+<li>Infinite</li>
+<li>Simple items</li>
+<li>Items with different heights</li>
+</ul>
+<p>Unfortunately this means that the DOM structure of list items can change depending on the
+mode the list is running. Therefore if you have custom styling on lists or list items, 
+change the selectors to match the new selectors.</p>
+<h2 id="components-_-theming_-_icon_fonts">Icon Fonts<a class="quick-link" href="#components-_-theming_-_icon_fonts"></a></h2>
+<p>One element of themes in Sencha Touch 2.2 is the new use of icons as fonts. 
+Previously, scaling icons required a great deal of overhead where the application 
+had to draw the picture for the icon and then redraw, rescale, and change it as 
+the app appeared on different browsers and devices.</p>
+<p>New in Touch 2.2, icons are now handled as fonts, which enables very fast scaling 
+without the need to redraw the picture. Icons appear on buttons and tabs.</p>
+<p>To convert your existing icons to fonts, you can use Pictos Server, Pictonic, 
+icomoon.io, or <a href="http://fontstruct.com/" class="external-link" target="_blank">http://fontstruct.com/</a> — some of these are free or available with trial
+subscriptions.</p>
+<h3 id="components-_-theming_-_using_the_pictos_font">Using the Pictos Font<a class="quick-link" href="#components-_-theming_-_using_the_pictos_font"></a></h3>
+<p>The Pictos font provides a large collection of free icons. You can find a full list of
+characters 
+available for the Pictos font at <a href="http://www.pictos.cc" class="external-link" target="_blank">http://www.pictos.cc</a>. 
+Sencha Touch provides free access to the <a href="http://pictos.cc/font/" class="external-link" target="_blank">Pictos Font Pack</a>.</p>
+<p>When you build your application using Sencha Cmd, the font libraries are copied to your
+application file.</p>
+<p>Just like Sencha Touch 1 and 2, Sencha Touch 2.2 and later maps icon names to actual 
+icons so you can use them within your application:</p>
+<pre><code class="language-javascript">{
+    xtype: &#39;button&#39;,
+    iconCls: &#39;home&#39;,
+    title: &#39;Home&#39;
+}
+</code></pre><p>For a full list of <code>iconCls</code> functions that are available, refer to the <code>Ext.Button</code> class
+documentation.</p>
+<p>Alternatively, you can use the Compass icon mixin to map a specific character of the 
+icon font to an iconCls which you can use in your app:</p>
+<pre><code class="language-javascript">@include icon(&#39;home&#39;, &#39;H&#39;);
+</code></pre><h3 id="components-_-theming_-_using_other_icon_fonts">Using Other Icon Fonts<a class="quick-link" href="#components-_-theming_-_using_other_icon_fonts"></a></h3>
+<p>The Pictos font is not the only font you can use in your application. 
+If you know of another font or you have custom converted your icons to fonts, 
+it is very easy to use that font with the icon mixin.</p>
+<p>Just like with the Pictos font, you need to specify the iconCls and character 
+to be used for the icon. Additionally, you need to specify the name of the icon font, 
+which needs to match the font family of the icon font you have, plus you need to 
+make sure the font has been included in your CSS using the icon-font mixin.</p>
+<p>This example specifies the Home icon in the custom MyFont:</p>
+<pre><code class="language-javascript">@include icon(&#39;home&#39;, &#39;H&#39;, &#39;MyFont&#39;);
+</code></pre><p>The following example shows how to include the Pictos font using the icon-font mixin:</p>
+<pre><code class="language-javascript">@include icon-font(&#39;Pictos&#39;, inline-font-files(&#39;pictos/pictos-web.woff&#39;, woff, &#39;pictos/pictos-web.ttf&#39;, truetype,&#39;pictos/pictos-web.svg&#39;, svg));
+</code></pre><p>The first parameter is the name of the font face, which must match the name 
+you use as the CSS font-family. The second parameter uses the inline-font-files 
+Compass function to base64-encode the font file inline into the CSS file with 
+paths to the WOFF, TTF, and SVG versions of the font files.</p>
+<p>A good list of other icon fonts (some paid and some free) is available at 
+<a href="http://css-tricks.com/flat-icons-icon-fonts/" class="external-link" target="_blank">http://css-tricks.com/flat-icons-icon-fonts/</a></p>
+<p>Sencha Touch 1 and 2 used <code>-webkit-maask</code> to display and style fonts. 
+Unfortuantely, although <code>webkit-mask</code> functionality works on most WebKit browsers, 
+it does not work on non-WebKit browsers like Internet Explorer. 
+Sencha Touch fully supports IE10, so <code>webkit-mask</code> is no longer an option as of Sencha
+Touch 2.2+.</p>
+<h3 id="components-_-theming_-_creating_a_custom_font">Creating a Custom Font<a class="quick-link" href="#components-_-theming_-_creating_a_custom_font"></a></h3>
+<p>There are many tools available online to create your own icon font. 
+A good example of this is <a href="http://icomoon.io/app/" class="external-link" target="_blank">icomoon</a>.</p>
+<p>Advantages of creating your own icon font:</p>
+<ul>
+<li>You can pick the icons you want to use in your application.</li>
+<li>Because you are choosing your own icons, you can reduce the file size of the font, 
+which in turn reduces the size of your stylesheet.</li>
+</ul>
+<h2 id="components-_-theming_-_adding_your_own_icons_to_your_application">Adding Your Own Icons to Your Application<a class="quick-link" href="#components-_-theming_-_adding_your_own_icons_to_your_application"></a></h2>
+<p>As of Sencha Touch 2.2.x webmasks for icons are no longer supported. 
+Instead Touch now uses the much more flexible and faster webfonts. 
+Configuring your application with new icons using Webfonts is simple. </p>
+<ol>
+<li><p>Create your own webfont file in WOFF, truetype, or SVG format. Sites like <a href="http://www.fontello.com" class="external-link" target="_blank">fontello</a> 
+let you select,create, and download your custom webfont file.Put your webfont in the default 
+location of the <code>resources/sass/stylesheets/fonts/</code> directory.</p>
+</li>
+<li><p>Include the webfont file into this Sass file using the <code>@include icon-font mixin</code> statement.  Once downloaded, incorporate the font file into your Compass files using the <code>@font-face mixin</code>:</p>
+<pre><code class="language-javascript">@include font-face(&#39;_fontName_&#39;, inline-font-files([&#39;_filename_&#39;, _filetype_]*));
+</code></pre><p>Where:</p>
+<ul>
+<li><em>fontName</em> is the name of your webfont.</li>
+<li><em>filename</em> and <em>filetype</em> are the path and type of the webfont file. Valid filetypes are the <code>woff</code>, <code>ttf</code>, or <code>svg</code> values.</li>
+</ul>
+</li>
+<li><p>Define your icon class names found in your font file using the <code>@include icon mixin</code> 
+statement. Once added to this Compass file,define a name for each icon within the file 
+using a unique name to access the icon.Using the icon mixin you define the icon:</p>
+<pre><code class="language-javascript">@include icon(&#39;_iconName_&#39;, &#39;_index_&#39;, &#39;_fontName_&#39;);
+</code></pre><p>Where:</p>
+<ul>
+<li><em>iconName</em> is the unique name for the icon you are referencing.</li>
+<li><em>index</em> is the index (letter or hexcode) into the webfont file the icon is to be found.</li>
+<li><em>fontName</em> is the name you gave your webfont file in step 2.</li>
+</ul>
+</li>
+<li><p>Compile your Compass files from the directory that this file found using the<code>compass compile</code> command</p>
+</li>
+</ol>
+<p>Example:</p>
+<p>If you use an online service to create and download yourown webfont file, this example shows 
+the commands to insertin the <code>app.scss</code> file in your project to addand utilize fonts found in a font file
+named <code>resources/sass/stylesheets/fonts/myfonts/myFonts.woff</code> under your app directory:</p>
+<pre><code class="language-javascript">@include font-face(&#39;myFonts&#39;, inline-font-files(&#39;myfonts/myFonts.woff&#39;, woff));
+@include icon(&#39;house&#39;, &#39;\002&#39;, &#39;myFonts&#39;);
+</code></pre>
+        </div>
+    </div>
+    <div id="footer">
+        <p class="di">
+            <a href="https://www.facebook.com/senchainc/" target="_blank"><img class="social" src="../../../../assets/images/fb.png"/></a>
+            <a href="https://www.linkedin.com/company/sencha-inc" target="_blank"><img class="social" src="../../../../assets/images/in.png"/></a>
+            <a href="https://twitter.com/Sencha" target="_blank"><img class="social" src="../../../../assets/images/twt.png"/></a>
+            Sencha Touch   | <a href='https://www.sencha.com/legal/terms-of-use/' target='_blank'>Terms of Use</a>
+        </p>
+    </div>
+</div>        </div>
+    </div>
+
+    <h2 class="product-header">
+        <a href="../../index.html">Sencha Touch 2.4 </a>
+        <span data-tip="Product / Version Menu" class="header-product-title product-menu-btn-wrap tooltip tooltip-tl-bl">
+            <span class="fa fa-angle-down product-menu-btn"></span>
+            <div class="callout callout-b"></div>
+        </span>
+        <div id="peekaboo-input" class="peekaboo-input dn">
+            <input type="text" id="mobile-input" />
+        </div>
+    </h2>
+
+    <div id="product-tree-ct" class="hide">
+        <div id="product-version-tree-ct" class="hide"></div>
+    </div>
+
+    <div id="historyConfigPanel">
+        <div class="history-type-selector">
+            <input id="historyTypeCurrent" type="radio" name="historyType" value="current" checked="true" />
+            <label for="historyTypeCurrent">Current Product / Version</label><br>
+            <input id="historyTypeAll" type="radio" name="historyType" value="all" />
+            <label for="historyTypeAll">All</label><br>
+            <div id="history-label-toggle" class="relative ml2 o-50">
+                <input id="history-all-labels" type="checkbox" checked="true" />
+                <label for="history-all-labels">Show product details in the history bar</label>
+                <div class="mask"></div>
+            </div>
+            <span id="history-clear" class="icon-btn history-clear tooltip tooltip-tr-br" data-tip="Clear History">
+                <i class="fa fa-trash"></i>
+                <div class="callout callout-b"></div>
+            </span>
+        </div>
+        <div id="history-full-list" class="overflow-y-auto"></div>
+    </div>
+
+    <div id="search-history-panel"></div>
+
+    <div id="modal-placeholder" class="modal">
+        <span id="modal-close" >&times;</span>
+        <img id="modal-content">
+        <div id="modal-caption"></div>
+    </div>
+
+
+</body>
+    <script type="text/javascript" src="../../../../assets/js/touch-2.4-guideSearch.js"></script>
+<!--[if lt IE 9 ]>
+<script type="text/javascript" src="../../../../assets/js/media-query-poly.js"></script>
+<style>
+    span.da-inline-fiddle-nav-fiddle.x-fa.fa-play-circle {
+        display: none;
+    }
+</style>
+<![endif]-->
+<script>
+    if (navigator.userAgent.indexOf("Safari") > -1) {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload()
+            }
+        };
+    }
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1396058-28', 'auto');
+    ga('send', 'pageview');
+</script>
+</html>

@@ -1,3 +1,8 @@
+```sencha -sdk C:\Users\DMye\WebstormProjects\hands-on-sencha-touch-2\01-Working generate app TouchStart C:\Users\DMye\WebstormProjects\hands-on-sencha-touch-2\TouchStart```
+
+
+
+
 Hands-on Sencha Touch 2
 ========================
 
